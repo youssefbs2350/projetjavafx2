@@ -5,6 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.*;
+
+
 
 public class AuthentificationAp extends Application {
 
@@ -25,7 +30,7 @@ public class AuthentificationAp extends Application {
         PasswordField passwordField = new PasswordField();
 
         Button loginButton = new Button("Se connecter");
-        Button inscriptionButton = new Button("Inscription"); // Ajout du bouton Inscription
+        Button inscriptionButton = new Button("Inscription");
         Label resultLabel = new Label();
 
         loginButton.setOnAction(e -> {
@@ -35,14 +40,20 @@ public class AuthentificationAp extends Application {
             boolean isAuthenticated = auth.authenticate(username, password);
 
             if (isAuthenticated) {
-                resultLabel.setText("Connexion réussie !");
+                // Connexion réussie, ouvrir une nouvelle fenêtre avec le message "Bonjour"
+                ouvrirNouvelleFenetre("Bonjour " + username + " !");
+
+
+
+                // Vous pouvez également fermer la fenêtre d'authentification si nécessaire
+                primaryStage.close();
+
             } else {
                 resultLabel.setText("Échec de la connexion. Vérifiez vos informations.");
             }
         });
 
         inscriptionButton.setOnAction(e -> {
-            // Crée une nouvelle instance de la classe Ajouterutilisateur et appelle sa méthode start
             Ajouterutilisateur ajouterutilisateur = new Ajouterutilisateur();
             Stage stage = new Stage();
             ajouterutilisateur.start(stage);
@@ -55,4 +66,13 @@ public class AuthentificationAp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-}
+
+    private void ouvrirNouvelleFenetre(String message) {
+
+        Home Home = new Home (message);
+        Stage stage = new Stage();
+        Home.start(stage);
+    }
+    }
+
+
