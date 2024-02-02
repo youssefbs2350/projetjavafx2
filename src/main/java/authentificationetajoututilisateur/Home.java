@@ -1,5 +1,6 @@
 package authentificationetajoututilisateur;
 
+import DetailsMatch.DetailsMatchApp;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -64,6 +65,13 @@ public class Home extends Application {
         Scene scene = new Scene(layout, 400, 120);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void ouvrirNouvelleFenetreDetailsMatch() {
+
+        DetailsMatchApp detailsMatch = new DetailsMatchApp();
+        Stage stage = new Stage();
+        detailsMatch.start(stage);
     }
 
 
