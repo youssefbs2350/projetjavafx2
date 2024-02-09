@@ -58,14 +58,17 @@ public class Home extends Application {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         // Chargement de l'image depuis le fichier
-        Image img = new Image("img.jpg");
+        Image img = new Image("D://img.jpg");
         layout.setBackground(new Background(new BackgroundFill(new ImagePattern(img), null, null)));
 
-        Scene scene = new Scene(layout, 400, 120);
+        Scene scene = new Scene(layout);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
+
+        // Maximiser la fenêtre au démarrage
+        primaryStage.setMaximized(true);
+
         primaryStage.show();
     }
-
-
 }
 

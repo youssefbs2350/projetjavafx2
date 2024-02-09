@@ -7,15 +7,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Ajouterutilisateur extends Application {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/projetjavafx";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    private Authentification auth = Authentification.getInstance();
 
     public static void main(String[] args) {
         launch(args);
@@ -24,9 +21,16 @@ public class Ajouterutilisateur extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Ajouter Utilisateur");
+        primaryStage.setMaximized(true);
+
+        Label usernameLabel = new Label("Nom d'utilisateur:");
+        TextField usernameField = new TextField();
 
         Label nomLabel = new Label("Nom:");
         TextField nomField = new TextField();
+
+        Label prenomLabel = new Label("Prénom:");
+        TextField prenomField = new TextField();
 
         Label passwordLabel = new Label("Mot de passe:");
         PasswordField passwordField = new PasswordField();
@@ -35,10 +39,12 @@ public class Ajouterutilisateur extends Application {
         Label resultLabel = new Label();
 
         ajouterButton.setOnAction(e -> {
+            String username = usernameField.getText();
             String nom = nomField.getText();
+            String prenom = prenomField.getText();
             String password = passwordField.getText();
 
-            boolean ajoutReussi = ajouterUtilisateur(nom, password);
+            boolean ajoutReussi = ajouterUtilisateur(username, nom, prenom, password);
 
             if (ajoutReussi) {
                 resultLabel.setText("Inscription réussie !");
@@ -48,19 +54,22 @@ public class Ajouterutilisateur extends Application {
         });
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(nomLabel, nomField, passwordLabel, passwordField, ajouterButton, resultLabel);
+        layout.getChildren().addAll(usernameLabel, usernameField, nomLabel, nomField, prenomLabel, prenomField, passwordLabel, passwordField, ajouterButton, resultLabel);
 
-        Scene scene = new Scene(layout, 300, 200);
+        Scene scene = new Scene(layout, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private boolean ajouterUtilisateur(String nom, String password) {
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD)) {
-            String query = "INSERT INTO utilisateurs (username, password, type) VALUES (?, ?, 'user')";
+    private boolean ajouterUtilisateur(String username, String nom, String prenom, String password) {
+        try {
+            Connection connection = auth.getConnection();
+            String query = "INSERT INTO utilisateurs (username, nom, prenom, password, type) VALUES (?, ?, ?, ?, 'user')";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setString(1, nom);
-                preparedStatement.setString(2, password);
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, nom);
+                preparedStatement.setString(3, prenom);
+                preparedStatement.setString(4, password);
 
                 int lignesAffectees = preparedStatement.executeUpdate();
 
@@ -72,5 +81,7 @@ public class Ajouterutilisateur extends Application {
         }
     }
 }
+
+
 
 

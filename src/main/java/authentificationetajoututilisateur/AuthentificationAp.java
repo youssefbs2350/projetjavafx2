@@ -5,15 +5,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.*;
-
-
+import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundSize;
+import javafx.geometry.Insets;
 
 public class AuthentificationAp extends Application {
 
-    private Authentification auth = new Authentification();
+    private Authentification auth = Authentification.getInstance();
 
     public static void main(String[] args) {
         launch(args);
@@ -33,6 +36,10 @@ public class AuthentificationAp extends Application {
         Button inscriptionButton = new Button("Inscription");
         Label resultLabel = new Label();
 
+        // Appliquer des styles CSS aux boutons
+        loginButton.getStyleClass().add("login-button");
+        inscriptionButton.getStyleClass().add("inscription-button");
+
         loginButton.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
@@ -42,8 +49,6 @@ public class AuthentificationAp extends Application {
             if (isAuthenticated) {
                 // Connexion réussie, ouvrir une nouvelle fenêtre avec le message "Bonjour"
                 ouvrirNouvelleFenetre("Bonjour " + username + " !");
-
-
 
                 // Vous pouvez également fermer la fenêtre d'authentification si nécessaire
                 primaryStage.close();
@@ -61,18 +66,31 @@ public class AuthentificationAp extends Application {
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton, inscriptionButton, resultLabel);
+        layout.setPadding(new Insets(20));
 
-        Scene scene = new Scene(layout, 300, 200);
+        // Charger l'image de fond
+        Image image = new Image("file:D://background.jpg");
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        Background background = new Background(backgroundImage);
+        layout.setBackground(background);
+        Scene scene = new Scene(layout);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
+
+        // Maximiser la fenêtre au démarrage
+        primaryStage.setMaximized(true);
+
         primaryStage.show();
     }
-
     private void ouvrirNouvelleFenetre(String message) {
-
-        Home Home = new Home (message);
+        Home home = new Home(message);
         Stage stage = new Stage();
-        Home.start(stage);
+        home.start(stage);
     }
-    }
+}
+
+
+
 
 
