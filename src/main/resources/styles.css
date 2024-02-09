@@ -1,0 +1,25 @@
+
+/* Style pour le bouton de connexion */
+.login-button {
+    -fx-background-color: #4CAF50; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Espacement interne */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+}
+
+/* Style pour le bouton d'inscription */
+.inscription-button {
+    -fx-background-color: #2196F3; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Espacement interne */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+}
+
+/* Style pour les boutons lorsqu'ils sont survolés */
+.login-button:hover, .inscription-button:hover {
+    -fx-background-color: #45a049; /* Couleur de fond au survol */
+}
+
+
