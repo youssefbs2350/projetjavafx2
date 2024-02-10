@@ -1,5 +1,6 @@
 package authentificationetajoututilisateur;
 
+import detailsMatch.DetailsMatchPage;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,12 +34,18 @@ public class Home extends Application {
         Button championnatButton = createButton("Championnat");
         Button matchButton = createButton("Match");
         Button detailsMatchButton = createButton("Détails Match");
+        detailsMatchButton.setOnAction(e -> {
+            DetailsMatchPage detailsMatchPage = new DetailsMatchPage();
+            Stage stage = new Stage();
+            detailsMatchPage.start(stage);
+            primaryStage.close();
+        });
 
         // Actions des boutons
         equipeButton.setOnAction(e -> System.out.println("Équipe"));
         championnatButton.setOnAction(e -> System.out.println("Championnat"));
         matchButton.setOnAction(e -> System.out.println("Match"));
-        detailsMatchButton.setOnAction(e -> System.out.println("Détails Match"));
+        //detailsMatchButton.setOnAction(e -> System.out.println("Détails Match"));
 
         Button fermerButton = new Button("Fermer");
         fermerButton.setOnAction(e -> primaryStage.close());

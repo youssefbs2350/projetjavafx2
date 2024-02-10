@@ -6,4 +6,5 @@ module authetifcationetajoututilisateur {
 
     opens authentificationetajoututilisateur to javafx.fxml;
     exports authentificationetajoututilisateur;
+    exports detailsMatch;
 }
