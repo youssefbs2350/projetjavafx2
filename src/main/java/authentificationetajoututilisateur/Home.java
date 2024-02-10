@@ -56,7 +56,7 @@ public class Home extends Application {
         layout.setPadding(new Insets(40));
 
         // Charger l'image depuis le fichier
-        Image backgroundImage = new Image("file:D://img.jpg");
+        Image backgroundImage = new Image("file:C://img.jpg");
         BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         layout.setBackground(new Background(background));
 
