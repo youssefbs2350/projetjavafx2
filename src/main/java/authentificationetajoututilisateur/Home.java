@@ -1,6 +1,6 @@
 package authentificationetajoututilisateur;
 
-import Championnat.Chmapionnat;
+import Championnat.Championnat;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -39,7 +39,7 @@ public class Home extends Application {
         equipeButton.setOnAction(e -> System.out.println("Équipe"));
        // link to championnat
         championnatButton.setOnAction(e ->{
-            Chmapionnat champ = new Chmapionnat();
+            Championnat champ = new Championnat();
             Stage stagechamp = new Stage();
             champ.start(stagechamp);
         });

@@ -8,12 +8,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Chmapionnat extends Application {
+public class Championnat extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-        Button ici = new Button("Click ICI");
 
         // Créer un TableView
         TableView<String[]> tableView = new TableView<>();
@@ -30,13 +28,29 @@ public class Chmapionnat extends Application {
             String[] rowData = param.getValue();
             return rowData != null && rowData.length > 1 ? new javafx.beans.property.SimpleStringProperty(rowData[1]) : null;
         });
+        column2.setCellFactory(column -> {
+            return new javafx.scene.control.TableCell<>() {
+                final Button button = new Button("Equipes");
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(button);
+                    }
+                }
+            };
+        });
 
         // Ajouter les colonnes à la TableView
         tableView.getColumns().addAll(column1, column2);
 
         // Ajouter des lignes de données
         for (int i = 0; i < 5; i++) {
-            tableView.getItems().add(new String[]{"Football Tournois " , "ICI"});
+            tableView.getItems().add(new String[]{"Football Tournois"});
         }
 
         // Créer une disposition VBox pour placer la TableView
