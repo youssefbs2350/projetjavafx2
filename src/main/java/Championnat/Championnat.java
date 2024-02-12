@@ -19,6 +19,7 @@ public class Championnat extends Application {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         statement = connection.createStatement();
         championnatid = statement.executeQuery("SELECT * FROM championnat");
+        Button ajouetrchampionnat = new Button("Ajouter un champpionnat");
 
 
 
@@ -64,14 +65,15 @@ public class Championnat extends Application {
                 }
             };
         });
-
-
-
         tableView.getColumns().addAll(column1, column2, column3);
         while (championnatid.next()) {
             tableView.getItems().add(new String[]{championnatid.getString("championnatid"),championnatid.getString("championnatName")});
         }
-        VBox root = new VBox(tableView);
+            ajouetrchampionnat.setOnAction(event -> {
+            // Ajoutez ici le code à exécuter lorsque le bouton est cliqué
+            System.out.println("Bouton cliqué !");
+        });
+        VBox root = new VBox(ajouetrchampionnat,tableView);
         Scene scene = new Scene(root, 360, 400);
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
