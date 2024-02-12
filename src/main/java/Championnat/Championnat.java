@@ -7,11 +7,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.sql.*;
+
 
 public class Championnat extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
 
         // Créer un TableView
         TableView<String[]> tableView = new TableView<>();
@@ -58,12 +63,38 @@ public class Championnat extends Application {
 
         // Créer la scène
         Scene scene = new Scene(root, 700, 400);
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT championnatid FROM championnat");
 
-        // Configurer le stage
+            // Parcourir les résultats
+            while (resultSet.next()) {
+                // Traitement des données récupérées
+                // Exemple : affichage des valeurs de chaque colonne
+                System.out.println("Colonne1 : " + resultSet.getString("championnatid"));
+                // Répéter pour chaque colonne nécessaire
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermeture des ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+    // Configurer le stage
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
+}
 
     public static void main(String[] args) {
         launch(args);

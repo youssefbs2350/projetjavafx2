@@ -14,6 +14,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class Home extends Application {
     private String message;
 
@@ -41,7 +43,11 @@ public class Home extends Application {
         championnatButton.setOnAction(e ->{
             Championnat champ = new Championnat();
             Stage stagechamp = new Stage();
-            champ.start(stagechamp);
+            try {
+                champ.start(stagechamp);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         matchButton.setOnAction(e -> System.out.println("Match"));
         detailsMatchButton.setOnAction(e -> System.out.println("Détails Match"));
