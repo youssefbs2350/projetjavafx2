@@ -70,6 +70,16 @@ public class Championnat extends Application {
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        ajouetrchampionnat.setOnAction(event -> {
+            Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat();
+            try {
+                ajoutchampionnat.start(new Stage());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
 }
     public static void main(String[] args) {
         launch(args);
