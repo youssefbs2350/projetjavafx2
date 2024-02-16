@@ -20,14 +20,6 @@ public class Championnat extends Application {
         statement = connection.createStatement();
         championnatid = statement.executeQuery("SELECT * FROM championnat");
         Button ajouetrchampionnat = new Button("Ajouter un champpionnat");
-
-
-
-
-
-
-
-
         // Créer un TableView
         TableView<String[]> tableView = new TableView<>();
 
