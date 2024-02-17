@@ -57,10 +57,12 @@ public class Championnat extends Application {
                         setGraphic(null);
                     } else {
                         setGraphic(button);
-                        button.setOnAction(event -> {
-                            String idChampionnat = getTableView().getItems().get(getIndex())[0];
-                            System.out.println("ID du championnat : " + idChampionnat);
+                        button.setOnAction(event ->
+                        { Afficherequipes afficherequipes = new Afficherequipes();
+                            afficherequipes.start(new Stage());
                         });
+
+                        ;
                     }
                 }
             };
@@ -88,3 +90,15 @@ public class Championnat extends Application {
         launch(args);
     }
 }
+
+
+/*
+
+    setOnAction(event -> {
+        String idChampionnat = getTableView().getItems().get(getIndex())[0];
+        System.out.println("ID du championnat : " + idChampionnat);
+*/
+
+
+
+
