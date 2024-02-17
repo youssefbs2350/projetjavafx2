@@ -20,10 +20,12 @@ public class Championnat extends Application {
         statement = connection.createStatement();
         championnatid = statement.executeQuery("SELECT * FROM championnat");
         Button ajouetrchampionnat = new Button("Ajouter un champpionnat");
-        // Créer un TableView
+
+
+        // Création du TableView
         TableView<String[]> tableView = new TableView<>();
 
-        // Créer les colonnes
+        // Création des colonnes
         TableColumn<String[], String> column1 = new TableColumn<>("Num de Championnat");
         column1.setCellValueFactory(param -> {
             String[] rowData = param.getValue();
@@ -41,6 +43,8 @@ public class Championnat extends Application {
             String[] rowData = param.getValue();
             return rowData != null && rowData.length > 1 ? new javafx.beans.property.SimpleStringProperty(rowData[1]) : null;
         });
+
+        // Modification de la cellule de la colonne "Les Equipes" pour y mettre un bouton
         column3.setCellFactory(column -> {
             return new javafx.scene.control.TableCell<>() {
                 final Button button = new Button("ICI");
@@ -53,34 +57,33 @@ public class Championnat extends Application {
                         setGraphic(null);
                     } else {
                         setGraphic(button);
+                        button.setOnAction(event -> {
+                            String idChampionnat = getTableView().getItems().get(getIndex())[0];
+                            System.out.println("ID du championnat : " + idChampionnat);
+                        });
                     }
                 }
             };
         });
-        tableView.getColumns().addAll(column1, column2, column3);
+
+        ajouetrchampionnat.setOnAction(event -> { Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat(); try { ajoutchampionnat.start(new Stage()); } catch (SQLException e) { e.printStackTrace(); } });
+
+
+        tableView.getColumns().addAll(column1, column2, column3  );
         while (championnatid.next()) {
             tableView.getItems().add(new String[]{championnatid.getString("championnatid"),championnatid.getString("championnatName")});
         }
-            ajouetrchampionnat.setOnAction(event -> {
-            // Ajoutez ici le code à exécuter lorsque le bouton est cliqué
-            System.out.println("Bouton cliqué !");
-        });
+
+
+
         VBox root = new VBox(ajouetrchampionnat,tableView);
         Scene scene = new Scene(root, 360, 400);
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
 
-        ajouetrchampionnat.setOnAction(event -> {
-            Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat();
-            try {
-                ajoutchampionnat.start(new Stage());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
 
-}
     public static void main(String[] args) {
         launch(args);
     }
