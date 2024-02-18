@@ -14,10 +14,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Afficherequipes extends Application {
-
+    // private String idChampionnat;
+   // public Afficherequipes(String idChampionnat) {
+  //      this.idChampionnat = idChampionnat; }
     private static final String DB_URL = "jdbc:mysql://localhost:3306/projetjavafx";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
+
+
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,7 +64,7 @@ public class Afficherequipes extends Application {
         // Récupérer les données de la base de données
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM teams")) {
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM teams WHERE championnatid = 1")) {
 
             while (resultSet.next()) {
                 tableView.getItems().add(new String[]{

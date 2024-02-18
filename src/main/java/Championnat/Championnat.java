@@ -11,6 +11,8 @@ import java.sql.*;
 
 public class Championnat extends Application {
 
+
+
     @Override
     public void start(Stage primaryStage) throws SQLException {
         Connection connection = null;
@@ -57,18 +59,24 @@ public class Championnat extends Application {
                         setGraphic(null);
                     } else {
                         setGraphic(button);
-                        button.setOnAction(event ->
-                        { Afficherequipes afficherequipes = new Afficherequipes();
-                            afficherequipes.start(new Stage());
+                        button.setOnAction(event -> {
+                            String idChampionnat = getTableView().getItems().get(getIndex())[0];
+                            Afficherequipes afficherequipes = new Afficherequipes();
+                            try {
+                                afficherequipes.start(new Stage());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         });
-
-                        ;
                     }
                 }
             };
         });
 
-        ajouetrchampionnat.setOnAction(event -> { Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat(); try { ajoutchampionnat.start(new Stage()); } catch (SQLException e) { e.printStackTrace(); } });
+        ajouetrchampionnat.setOnAction(event -> {
+            Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat();
+            try { ajoutchampionnat.start(new Stage());}
+            catch (SQLException e) { e.printStackTrace(); } });
 
 
         tableView.getColumns().addAll(column1, column2, column3  );
