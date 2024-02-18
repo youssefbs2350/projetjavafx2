@@ -18,6 +18,11 @@ public class Afficherequipes extends Application {
 
     int x = 1 ;
 
+    public Afficherequipes() {
+        // If you need to initialize anything, you can do it here
+    }
+
+
     public Afficherequipes(String idChampionnat)
     {
         this.idChampionnat = idChampionnat;
@@ -29,11 +34,6 @@ public class Afficherequipes extends Application {
         TableView<String[]> tableView = new TableView<>();
 
         // Créer les colonnes
-        TableColumn<String[], String> column1 = new TableColumn<>("ID de l'équipe");
-        column1.setCellValueFactory(param -> {
-            String[] rowData = param.getValue();
-            return rowData != null && rowData.length > 0 ? new javafx.beans.property.SimpleStringProperty(rowData[0]) : null;
-        });
 
         TableColumn<String[], String> column2 = new TableColumn<>("Nom de l'équipe");
         column2.setCellValueFactory(param -> {
@@ -59,7 +59,7 @@ public class Afficherequipes extends Application {
             return rowData != null && rowData.length > 4 ? new javafx.beans.property.SimpleStringProperty(rowData[4]) : null;
         });
 
-        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
+        tableView.getColumns().addAll( column2, column3, column4, column5);
 
         String query = "SELECT * FROM teams WHERE championnatid = ?";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
