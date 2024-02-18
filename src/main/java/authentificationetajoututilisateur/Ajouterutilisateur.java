@@ -1,14 +1,20 @@
+/*
 package authentificationetajoututilisateur;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.sql.*;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class Ajouterutilisateur extends Application {
 
@@ -62,6 +68,7 @@ public class Ajouterutilisateur extends Application {
         layout.getChildren().addAll(usernameLabel, usernameField, nomLabel, nomField, prenomLabel, prenomField, passwordLabel, passwordField, ajouterButton, resultLabel);
 
         Scene scene = new Scene(layout, 400, 300);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -136,3 +143,6 @@ public class Ajouterutilisateur extends Application {
         }
     }
 }
+
+
+*/

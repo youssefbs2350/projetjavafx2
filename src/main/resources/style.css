@@ -1,0 +1,46 @@
+/* Style pour les boutons "Équipe", "Championnat", "Match" et "Détails Match" */
+.button {
+    -fx-font-size: 18px; /* Taille de police */
+    -fx-pref-width: 160px; /* Largeur préférée */
+    -fx-pref-height: 50px; /* Hauteur préférée */
+    -fx-background-radius: 25px; /* Rayon des coins */
+    -fx-border-radius: 25px; /* Rayon des coins */
+    -fx-padding: 10px 20px; /* Espacement du texte à l'intérieur du bouton */
+}
+
+/* Style pour le bouton "Équipe" */
+.equipeButton {
+    -fx-background-color: #4CAF50; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+}
+
+/* Style pour le bouton "Championnat" */
+.championnatButton {
+    -fx-background-color: #2196F3; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+}
+
+/* Style pour le bouton "Match" */
+.matchButton {
+    -fx-background-color: #FF5722; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+}
+
+/* Style pour le bouton "Détails Match" */
+.detailsMatchButton {
+    -fx-background-color: #FF9800; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+}
+
+/* Style pour le bouton "Fermer" */
+.fermerButton {
+    -fx-background-color: #f44336; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-padding: 10px 20px; /* Espacement interne */
+}
+/* Style pour les boutons au survol */
+.button:hover {
+    -fx-background-color: #3e8e41; /* Couleur de fond au survol */
+}

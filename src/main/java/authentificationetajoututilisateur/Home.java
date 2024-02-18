@@ -9,9 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class Home extends Application {
     private String message;
@@ -40,27 +41,36 @@ public class Home extends Application {
         matchButton.setOnAction(e -> System.out.println("Match"));
         detailsMatchButton.setOnAction(e -> System.out.println("Détails Match"));
 
+        // Bouton Fermer
         Button fermerButton = new Button("Fermer");
         fermerButton.setOnAction(e -> primaryStage.close());
 
-        fermerButton.setStyle(getClass().getResource("/styles.css").toExternalForm());
-        // HBox pour les boutons
+        fermerButton.setPrefSize(120, 60);
+
+        // HBox pour les boutons horizontaux
         HBox buttonsBox = new HBox(30);
         buttonsBox.getChildren().addAll(equipeButton, championnatButton, matchButton, detailsMatchButton);
         buttonsBox.setAlignment(Pos.CENTER);
 
+        // HBox pour le bouton Fermer dans le coin inférieur droit
+        HBox bottomRightBox = new HBox();
+        bottomRightBox.getChildren().add(fermerButton);
+        bottomRightBox.setAlignment(Pos.BOTTOM_RIGHT);
+
         // VBox pour l'ensemble de la mise en page
         VBox layout = new VBox(30);
-        layout.getChildren().addAll(messageLabel, buttonsBox, fermerButton);
+        layout.getChildren().addAll(messageLabel, buttonsBox);
+        layout.getChildren().add(bottomRightBox);
         layout.setAlignment(Pos.TOP_LEFT); // Aligner au coin supérieur gauche
         layout.setPadding(new Insets(40));
 
         // Charger l'image depuis le fichier
-        Image backgroundImage = new Image("file:D://img.jpg");
+        Image backgroundImage = new Image("img.jpg");
         BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         layout.setBackground(new Background(background));
 
         Scene scene = new Scene(layout, 800, 600);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         primaryStage.setScene(scene);
 
         primaryStage.setMaximized(true);
@@ -71,8 +81,8 @@ public class Home extends Application {
     // Méthode utilitaire pour créer des boutons avec un style uniforme
     private Button createButton(String text) {
         Button button = new Button(text);
-        button.setPrefSize(180, 60);
-        button.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        button.setPrefSize(120, 60);
+
         return button;
     }
 
@@ -80,3 +90,4 @@ public class Home extends Application {
         launch(args);
     }
 }
+
