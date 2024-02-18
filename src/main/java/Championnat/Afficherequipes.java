@@ -7,23 +7,23 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Afficherequipes extends Application {
-    // private String idChampionnat;
-   // public Afficherequipes(String idChampionnat) {
-  //      this.idChampionnat = idChampionnat; }
+
     private static final String DB_URL = "jdbc:mysql://localhost:3306/projetjavafx";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
+    private String idChampionnat;
 
+    int x = 1 ;
 
-
-
+    public Afficherequipes(String idChampionnat)
+    {
+        this.idChampionnat = idChampionnat;
+        System.out.println(" maher : " + idChampionnat);
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         TableView<String[]> tableView = new TableView<>();
@@ -61,11 +61,12 @@ public class Afficherequipes extends Application {
 
         tableView.getColumns().addAll(column1, column2, column3, column4, column5);
 
-        // Récupérer les données de la base de données
+        String query = "SELECT * FROM teams WHERE championnatid = ?";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM teams WHERE championnatid = 1")) {
-
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            // Remplacer le paramètre dans la requête SQL avec idChampionnat
+            statement.setString(1, idChampionnat);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 tableView.getItems().add(new String[]{
                         resultSet.getString("teamId"),
@@ -86,7 +87,5 @@ public class Afficherequipes extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }
