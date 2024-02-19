@@ -48,7 +48,8 @@ public class Championnat extends Application {
                         setGraphic(button);
                         button.setOnAction(event -> {
                             String idChampionnat = getTableView().getItems().get(getIndex())[0];
-                            Afficherequipes afficherequipes = new Afficherequipes(idChampionnat);
+                            String nomchampionnat =  getTableView().getItems().get(getIndex())[1];
+                            Afficherequipes afficherequipes = new Afficherequipes(idChampionnat,nomchampionnat);
                             try {
                                 afficherequipes.start(new Stage());
                             } catch (Exception e) {

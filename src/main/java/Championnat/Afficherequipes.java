@@ -1,25 +1,36 @@
 package Championnat;
+
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.sql.*;
+
 public class Afficherequipes extends Application {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/projetjavafx";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
+    private String nomchampionnat;
     private String idChampionnat;
+
     public Afficherequipes() {
         // If you need to initialize anything, you can do it here
     }
-    public Afficherequipes(String idChampionnat)
-    {
+
+    public Afficherequipes(String idChampionnat, String nomchampionnat) {
+        this.nomchampionnat = nomchampionnat;
         this.idChampionnat = idChampionnat;
     }
+
     @Override
     public void start(Stage primaryStage) {
+        Label titleLabel = new Label(nomchampionnat);
+        titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+
         TableView<String[]> tableView = new TableView<>();
         // Créer les colonnes
         TableColumn<String[], String> column2 = new TableColumn<>("Nom de l'équipe");
@@ -42,7 +53,7 @@ public class Afficherequipes extends Application {
             String[] rowData = param.getValue();
             return rowData != null && rowData.length > 4 ? new javafx.beans.property.SimpleStringProperty(rowData[4]) : null;
         });
-        tableView.getColumns().addAll( column2, column3, column4, column5);
+        tableView.getColumns().addAll(column2, column3, column4, column5);
         String query = "SELECT * FROM teams WHERE championnatid = ?";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -61,10 +72,16 @@ public class Afficherequipes extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        VBox root = new VBox(tableView);
+        VBox root = new VBox(titleLabel, tableView);
+        root.setSpacing(10);
+        root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("Affichage des équipes");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
