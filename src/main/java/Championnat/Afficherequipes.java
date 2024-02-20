@@ -28,43 +28,14 @@ public class Afficherequipes extends Application {
         this.nomchampionnat = nomchampionnat;
         this.idChampionnat = idChampionnat;
     }
-
     @Override
     public void start(Stage primaryStage) {
-        Label titleLabel = new Label(nomchampionnat);
+        Label titleLabel = new Label("Championnat : "+nomchampionnat);
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        Label Text = new Label("Championnat : ");
-        Text.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        HBox hbox = new HBox();
-        hbox.getChildren().add(Text);
-        HBox.setMargin(Text,new Insets(0, 0, 0, 20));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         TableView<String[]> tableView = new TableView<>();
         // Créer les colonnes
         TableColumn<String[], String> column2 = new TableColumn<>("Nom de l'équipe");
-        column2.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        column2.setStyle("-fx-background-color: #4CAF50;");
         column2.setPrefWidth(180);
         column2.setCellValueFactory(param -> {
             String[] rowData = param.getValue();
@@ -114,7 +85,7 @@ public class Afficherequipes extends Application {
         closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());
         VBox.setMargin(closeButton, new Insets(0, 0, 10, 550));
-        VBox root = new VBox(Text,titleLabel,tableView,closeButton);
+        VBox root = new VBox(titleLabel,tableView,closeButton);
         root.setSpacing(10);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 720, 450);
