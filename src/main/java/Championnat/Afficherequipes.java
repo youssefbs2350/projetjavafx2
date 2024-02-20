@@ -1,5 +1,4 @@
 package Championnat;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,25 +11,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.sql.*;
-
 public class Afficherequipes extends Application {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/projetjavafx";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
     private String nomchampionnat;
     private String idChampionnat;
-
     public Afficherequipes() {
         // If you need to initialize anything, you can do it here
     }
-
     public Afficherequipes(String idChampionnat, String nomchampionnat) {
         this.nomchampionnat = nomchampionnat;
         this.idChampionnat = idChampionnat;
     }
     @Override
     public void start(Stage primaryStage) {
-        Label titleLabel = new Label("Championnat : "+nomchampionnat);
+        Label titleLabel = new Label("List des Equipes dans la Chammpionnat : "+nomchampionnat);
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         TableView<String[]> tableView = new TableView<>();
         // Créer les colonnes
@@ -82,8 +78,9 @@ public class Afficherequipes extends Application {
             e.printStackTrace();
         }
         Button closeButton = new Button("Fermer");
-        Button retour = new Button("Retour");
+        Button retour = new Button("Championnat List");
         retour.setOnAction(event -> {
+            primaryStage.close();
             Championnat retourpage = new Championnat();
             try {
                 retourpage.start(new Stage());
@@ -92,21 +89,20 @@ public class Afficherequipes extends Application {
             }
         });
         closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
-        retour.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
+        retour.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());
         HBox buttonBox = new HBox(closeButton, retour);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
-        buttonBox.setSpacing(500); // Espacement entre les boutons
+        buttonBox.setSpacing(440);
         VBox.setMargin(buttonBox, new Insets(0, 0, 10, 50));
         VBox root = new VBox(titleLabel,tableView,buttonBox);
-        root.setSpacing(10);
+        root.setSpacing(30);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 720, 450);
         primaryStage.setTitle("Affichage des équipes");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     public static void main(String[] args) {
         launch(args);
     }
