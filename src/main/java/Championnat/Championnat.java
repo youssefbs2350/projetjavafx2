@@ -83,7 +83,10 @@ public class Championnat extends Application {
         while (championnatid.next()) {
             tableView.getItems().add(new String[]{championnatid.getString("championnatid"), championnatid.getString("championnatName")});
         }
-        VBox root = new VBox(titleLabel, tableView, ajouetrchampionnat);
+        Button closeButton = new Button("Fermer");
+        closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
+        closeButton.setOnAction(event -> primaryStage.close());
+        VBox root = new VBox(titleLabel, tableView, ajouetrchampionnat,closeButton);
         Scene scene = new Scene(root, 400, 400);
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
