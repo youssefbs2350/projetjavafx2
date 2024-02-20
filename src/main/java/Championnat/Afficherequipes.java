@@ -82,10 +82,23 @@ public class Afficherequipes extends Application {
             e.printStackTrace();
         }
         Button closeButton = new Button("Fermer");
+        Button retour = new Button("Retour");
+        retour.setOnAction(event -> {
+            Championnat retourpage = new Championnat();
+            try {
+                retourpage.start(new Stage());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
         closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
+        retour.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());
-        VBox.setMargin(closeButton, new Insets(0, 0, 10, 550));
-        VBox root = new VBox(titleLabel,tableView,closeButton);
+        HBox buttonBox = new HBox(closeButton, retour);
+        buttonBox.setAlignment(Pos.CENTER_LEFT);
+        buttonBox.setSpacing(500); // Espacement entre les boutons
+        VBox.setMargin(buttonBox, new Insets(0, 0, 10, 50));
+        VBox root = new VBox(titleLabel,tableView,buttonBox);
         root.setSpacing(10);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 720, 450);
