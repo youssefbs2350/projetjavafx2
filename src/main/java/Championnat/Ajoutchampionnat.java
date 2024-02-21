@@ -16,9 +16,9 @@ public class Ajoutchampionnat extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws SQLException {
-        Connexion à la base de données (commenté pour cet exemple)
+      //  Connexion à la base de données (commenté pour cet exemple)
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-        Création des éléments de l'interface
+      //  Création des éléments de l'interface
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label(); // Ajout d'un label vide
@@ -58,7 +58,7 @@ public class Ajoutchampionnat extends Application {
     }
     private void insererChampionnatDansLaBaseDeDonnees(String nomChampionnat) {
         try {
-            Connexion à la base de données (commenté pour cet exemple)
+         //   Connexion à la base de données (commenté pour cet exemple)
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
             String sql = "INSERT INTO championnat (championnatName) VALUES (?)";
             PreparedStatement statement = connection.prepareStatement(sql);
