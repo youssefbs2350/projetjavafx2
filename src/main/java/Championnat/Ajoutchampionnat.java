@@ -31,24 +31,36 @@ public class Ajoutchampionnat extends Application {
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         TextField textFieldNomChampionnat = new TextField();
         Button boutonConfirmer = new Button("Confirmer");
-        Button boutonReset = new Button("Réinitialiser");
-        Button boutonFermer = new Button("Fermer");
+
+
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = textFieldNomChampionnat.getText();
              insererChampionnatDansLaBaseDeDonnees(nomChampionnat);
             System.out.println("Nom du championnat confirmé : " + nomChampionnat);
         });
-        boutonFermer.setOnAction(event -> primaryStage.close());
-        boutonReset.setOnAction(event -> textFieldNomChampionnat.clear());
+
+
+        Button retourchampioonat = new Button("Championnat List");
+        retourchampioonat.setOnAction(event -> {
+            primaryStage.close();
+            Championnat retourpage = new Championnat();
+            try {
+                retourpage.start(new Stage());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
+
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
-        boutonFermer.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
+        retourchampioonat.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         titleBox.setStyle("-fx-alignment: center;"); // Centrer le titre horizontalement
-        HBox buttonsBox = new HBox(boutonConfirmer, boutonFermer);
+        HBox buttonsBox = new HBox(boutonConfirmer, retourchampioonat);
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
-        buttonsBox.setSpacing(500); // Espacement entre les boutons
+        buttonsBox.setSpacing(400); // Espacement entre les boutons
         root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel6, textFieldNomChampionnat , emptyLabel4, emptyLabel5 , buttonsBox);
         Scene scene = new Scene(root, 720, 600);
         // Configuration de la scène et affichage de la fenêtre

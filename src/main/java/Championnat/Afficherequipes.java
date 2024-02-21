@@ -93,7 +93,7 @@ public class Afficherequipes extends Application {
         closeButton.setOnAction(event -> primaryStage.close());
         HBox buttonBox = new HBox(closeButton, retour);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
-        buttonBox.setSpacing(440);
+        buttonBox.setSpacing(320);
         VBox.setMargin(buttonBox, new Insets(0, 0, 10, 50));
         VBox root = new VBox(titleLabel,tableView,buttonBox);
         root.setSpacing(30);

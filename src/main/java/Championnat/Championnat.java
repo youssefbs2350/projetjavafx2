@@ -58,6 +58,7 @@ public class Championnat extends Application {
                             String nomchampionnat = getTableView().getItems().get(getIndex())[1];
                             Afficherequipes afficherequipes = new Afficherequipes(idChampionnat, nomchampionnat);
                             try {
+                                primaryStage.close();
                                 afficherequipes.start(new Stage());
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -70,6 +71,7 @@ public class Championnat extends Application {
         ajouetrchampionnat.setOnAction(event -> {
             Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat();
             try {
+                primaryStage.close();
                 ajoutchampionnat.start(new Stage());
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -86,7 +88,7 @@ public class Championnat extends Application {
         closeButton.setOnAction(event -> primaryStage.close());
         HBox buttonBox = new HBox(ajouetrchampionnat,closeButton);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
-        buttonBox.setSpacing(350); // Espacement entre les boutons
+        buttonBox.setSpacing(400); // Espacement entre les boutons
         VBox.setMargin(buttonBox, new Insets(0, 0, 0, 50));
         VBox root = new VBox(titleLabel,tableView,emptyLabel1,emptyLabel2,buttonBox);
         Scene scene = new Scene(root, 720, 500);
