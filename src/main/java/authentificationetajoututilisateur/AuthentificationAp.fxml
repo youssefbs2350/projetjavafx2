@@ -21,7 +21,7 @@
     <VBox layoutY="168.0" prefHeight="122.0" prefWidth="303.0">
         <BorderPane prefHeight="94.0" prefWidth="330.0">
             <left>
-                <Label text="Mot de passe:            " textFill="#05d121" BorderPane.alignment="CENTER">
+                <Label text="Mot de passe:                  " textFill="#05d121" BorderPane.alignment="CENTER">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -33,7 +33,7 @@
         </BorderPane>
         <Label fx:id="resultLabel" />
     </VBox>
-    <ImageView fitHeight="102.0" fitWidth="98.0" layoutX="144.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="102.0" fitWidth="100.0" layoutX="175.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@login2.png" />
     </ImageView>
     <Button fx:id="loginButton" layoutX="399.0" layoutY="101.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleLoginButtonAction" prefHeight="30.0" prefWidth="100.0" styleClass="loginButton" stylesheets="@styles.css" text="Se connecter">

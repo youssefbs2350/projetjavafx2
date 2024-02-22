@@ -42,14 +42,14 @@
 
 /* Style pour les boutons "Équipe", "Championnat", "Match" et "Détails Match" */
 .button {
-    -fx-font-size: 18px; /* Taille de police */
-    -fx-pref-width: 160px; /* Largeur préférée */
-    -fx-pref-height: 50px; /* Hauteur préférée */
-    -fx-background-radius: 25px; /* Rayon des coins */
-    -fx-border-radius: 25px; /* Rayon des coins */
-    -fx-padding: 10px 20px; /* Espacement du texte à l'intérieur du bouton */
+    /* Couleur de fond */
+    -fx-background-color: #4CAF50,
+    -fx-text-fill white, /* Couleur du texte */
+    -fx-font-size 14px, /* Taille de la police */
+    -fx-padding 8px 16px, /* Espacement interne */
+    -fx-border-radius 5px; /* Rayon de la bordure */
 }
-.ajouter-button{
+.ajouterButton{
      /* Couleur de fond */
     -fx-background-color: #4CAF50,
     -fx-text-fill white, /* Couleur du texte */

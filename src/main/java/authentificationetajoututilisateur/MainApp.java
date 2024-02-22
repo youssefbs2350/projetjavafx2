@@ -39,21 +39,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 public class MainApp extends Application {
-
-   /* @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        // Charger le fichier FXML AuthentificationAp.fxml
-        Parent root = FXMLLoader.load(Objects.<URL>requireNonNull(getClass().getResource("/AuthentificationAp.fxml")));
-        System.out.println("root = " + root);
-        primaryStage.setTitle("Authentification");
-        primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
-    }
-    public static void main(String[] args) {
-        launch(args);
-    }
-}*/
    FXMLLoader loader = new FXMLLoader();
     public static Stage stage;
    @Override

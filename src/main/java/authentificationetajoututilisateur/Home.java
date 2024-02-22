@@ -35,6 +35,15 @@ public class Home extends Application {
         Button matchButton = createButton("Match");
         Button detailsMatchButton = createButton("Détails Match");
 
+        // Nouveau bouton pour modifier les données de l'utilisateur
+        Button modifierButton = createButton("Modifier");
+        modifierButton.setOnAction(e -> {
+            ModifierUtilisateur modifierWindow = new ModifierUtilisateur();
+
+            Stage stage2 = new Stage();
+            modifierWindow.start(stage2);
+        });
+
         // Actions des boutons
         equipeButton.setOnAction(e -> System.out.println("Équipe"));
         championnatButton.setOnAction(e -> System.out.println("Championnat"));
@@ -47,20 +56,21 @@ public class Home extends Application {
 
         fermerButton.setPrefSize(120, 60);
 
-        // HBox pour les boutons horizontaux
+        // HBox pour les boutons horizontaux (sauf le bouton Fermer)
         HBox buttonsBox = new HBox(30);
         buttonsBox.getChildren().addAll(equipeButton, championnatButton, matchButton, detailsMatchButton);
         buttonsBox.setAlignment(Pos.CENTER);
 
-        // HBox pour le bouton Fermer dans le coin inférieur droit
-        HBox bottomRightBox = new HBox();
-        bottomRightBox.getChildren().add(fermerButton);
-        bottomRightBox.setAlignment(Pos.BOTTOM_RIGHT);
+        // HBox pour le nouveau bouton et le bouton Fermer
+        HBox bottomBox = new HBox(30);
+        bottomBox.getChildren().addAll(modifierButton, new Region(), fermerButton);
+        bottomBox.setAlignment(Pos.CENTER); // Centrage des boutons
+        HBox.setHgrow(new Region(), Priority.ALWAYS); // Permet au bouton Fermer de rester à droite
 
         // VBox pour l'ensemble de la mise en page
         VBox layout = new VBox(30);
         layout.getChildren().addAll(messageLabel, buttonsBox);
-        layout.getChildren().add(bottomRightBox);
+        layout.getChildren().add(bottomBox);
         layout.setAlignment(Pos.TOP_LEFT); // Aligner au coin supérieur gauche
         layout.setPadding(new Insets(40));
 
@@ -70,7 +80,7 @@ public class Home extends Application {
         layout.setBackground(new Background(background));
 
         Scene scene = new Scene(layout, 800, 600);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         primaryStage.setScene(scene);
 
         primaryStage.setMaximized(true);
@@ -90,4 +100,3 @@ public class Home extends Application {
         launch(args);
     }
 }
-
