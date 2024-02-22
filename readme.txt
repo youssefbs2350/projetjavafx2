@@ -1,7 +1,6 @@
-ajouter un button pour supprime une championnat 
-modifer table equipe telque ajouter la nom du championnnt dans la colone
-ajouter la novelle base de donner 
-ajouter quelque champ dan base de donne 
+Ajouter un bouton pour supprimer un championnat
+Modifier la table équipe en y ajoutant le nom du championnat dans la colonne
+Ajouter la nouvelle base de données
+Ajouter quelques champs dans la base de données
 
--date de creation 
 
