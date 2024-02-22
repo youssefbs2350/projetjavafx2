@@ -31,15 +31,11 @@ public class Ajoutchampionnat extends Application {
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         TextField textFieldNomChampionnat = new TextField();
         Button boutonConfirmer = new Button("Confirmer");
-
-
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = textFieldNomChampionnat.getText();
              insererChampionnatDansLaBaseDeDonnees(nomChampionnat);
             System.out.println("Nom du championnat confirmé : " + nomChampionnat);
         });
-
-
         Button retourchampioonat = new Button("Championnat List");
         retourchampioonat.setOnAction(event -> {
             primaryStage.close();
@@ -50,8 +46,6 @@ public class Ajoutchampionnat extends Application {
                 e.printStackTrace();
             }
         });
-
-
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
         retourchampioonat.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
