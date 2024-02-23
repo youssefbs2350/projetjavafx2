@@ -20,7 +20,7 @@ public class Championnat extends Application {
         ResultSet championnatid = null;
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         statement = connection.createStatement();
-        championnatid = statement.executeQuery("SELECT * FROM championnat");
+        championnatid = statement.executeQuery("SELECT * FROM championship");
         Label emptyLabel1 = new Label(); // Ajout d'un label vide
         Label emptyLabel2 = new Label(); // Ajout d'un label vide
         Button ajouetrchampionnat = new Button("Ajouter un champpionnat");
@@ -79,7 +79,7 @@ public class Championnat extends Application {
         });
         tableView.getColumns().addAll(column1, column2, column3);
         while (championnatid.next()) {
-        tableView.getItems().add(new String[]{championnatid.getString("championnatid"), championnatid.getString("championnatName")});
+        tableView.getItems().add(new String[]{championnatid.getString("championship_id"), championnatid.getString("championship_name")});
         Button closeButton = new Button("Fermer");
         closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());

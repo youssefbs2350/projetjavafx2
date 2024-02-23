@@ -59,7 +59,7 @@ public class Afficherequipes extends Application {
             return rowData != null && rowData.length > 4 ? new javafx.beans.property.SimpleStringProperty(rowData[4]) : null;
         });
         tableView.getColumns().addAll(column2, column3, column4, column5);
-        String query = "SELECT * FROM teams WHERE championnatid = ?";
+        String query = "SELECT * FROM team WHERE championship_id = ?";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement statement = connection.prepareStatement(query)) {
             // Remplacer le paramètre dans la requête SQL avec idChampionnat

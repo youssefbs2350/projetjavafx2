@@ -66,7 +66,7 @@ public class Ajoutchampionnat extends Application {
         try {
          //   Connexion à la base de données (commenté pour cet exemple)
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-            String sql = "INSERT INTO championnat (championnatName) VALUES (?)";
+            String sql = "INSERT INTO championship (championship_name) VALUES (?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nomChampionnat);
             statement.executeUpdate();
