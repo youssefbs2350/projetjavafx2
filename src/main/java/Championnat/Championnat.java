@@ -92,7 +92,7 @@ public class Championnat extends Application {
                             String nomchampionnat = getTableView().getItems().get(getIndex())[1];
                          //   Afficherequipes afficherequipes = new Afficherequipes(idChampionnat, nomchampionnat);
                             try {
-                                primaryStage.close();
+                           //     primaryStage.close();
                            //     afficherequipes.start(new Stage());
                             } catch (Exception e) {
                                 e.printStackTrace();
