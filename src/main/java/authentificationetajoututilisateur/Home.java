@@ -38,6 +38,17 @@ public class Home extends Application {
         Button matchButton = createButton("Match");
         Button detailsMatchButton = createButton("Détails Match");
 
+     /*   championnatButton.setOnAction(e ->{
+            Championnat champ = new Championnat();
+            Stage stagechamp = new Stage();
+            try {
+                champ.start(stagechamp);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });*/
+
+
         // Nouveau bouton pour modifier les données de l'utilisateur
         Button modifierButton = createButton("Modifier");
         modifierButton.setOnAction(e -> {
