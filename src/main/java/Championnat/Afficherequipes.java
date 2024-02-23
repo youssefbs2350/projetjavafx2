@@ -18,7 +18,6 @@ public class Afficherequipes extends Application {
     private String nomchampionnat;
     private String idChampionnat;
     public Afficherequipes() {
-        // If you need to initialize anything, you can do it here
     }
     public Afficherequipes(String idChampionnat, String nomchampionnat) {
         this.nomchampionnat = nomchampionnat;

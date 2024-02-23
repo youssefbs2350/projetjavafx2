@@ -68,10 +68,6 @@ public class Championnat extends Application {
                 }
             };
         });
-
-
-
-
         TableColumn<String[], String> column4 = new TableColumn<>("Geree");
         column3.setCellValueFactory(param -> {
             String[] rowData = param.getValue();
@@ -91,9 +87,22 @@ public class Championnat extends Application {
                             String idChampionnat = getTableView().getItems().get(getIndex())[0];
                             String nomchampionnat = getTableView().getItems().get(getIndex())[1];
                          //   Afficherequipes afficherequipes = new Afficherequipes(idChampionnat, nomchampionnat);
+                            Connection connection = null;
                             try {
-                           //     primaryStage.close();
-                           //     afficherequipes.start(new Stage());
+                                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                            String sql = "DELETE FROM championship WHERE championship_id = ?";
+                            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                                statement.setString(1, idChampionnat);
+                                int rowsAffected = statement.executeUpdate();
+                                getTableView().getItems().remove(getIndex());
+                                getTableView().refresh();
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                            try {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -102,33 +111,6 @@ public class Championnat extends Application {
                 }
             };
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ajouetrchampionnat.setOnAction(event -> {
             Ajoutchampionnat ajoutchampionnat = new Ajoutchampionnat();
             try {

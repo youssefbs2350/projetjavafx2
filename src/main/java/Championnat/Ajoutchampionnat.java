@@ -18,7 +18,6 @@ public class Ajoutchampionnat extends Application {
     public void start(Stage primaryStage) throws SQLException {
       //  Connexion à la base de données (commenté pour cet exemple)
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-      //  Création des éléments de l'interface
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label(); // Ajout d'un label vide
@@ -30,6 +29,7 @@ public class Ajoutchampionnat extends Application {
         Label labelNomChampionnat = new Label("Nom du championnat :");
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         TextField textFieldNomChampionnat = new TextField();
+        textFieldNomChampionnat.setPrefWidth(20);
         Button boutonConfirmer = new Button("Confirmer");
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = textFieldNomChampionnat.getText();
@@ -70,7 +70,7 @@ public class Ajoutchampionnat extends Application {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nomChampionnat);
             statement.executeUpdate();
-            System.out.println("Championnat inséré dans la base de données : " + nomChampionnat);
+        //    System.out.println("Championnat inséré dans la base de données : " + nomChampionnat);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
