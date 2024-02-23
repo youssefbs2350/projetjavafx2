@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="830.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="authentificationetajoututilisateur.AjouterutilisateurController">
+    <children>
+        <ImageView fitHeight="524.0" fitWidth="831.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@lingrad2.png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="14.0" layoutY="-13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="842.0">
+            <children>
+                <BorderPane layoutY="103.0" prefHeight="269.0" prefWidth="389.0">
+                    <center>
+                        <VBox prefHeight="270.0" prefWidth="362.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <HBox alignment="CENTER" />
+                              <VBox prefHeight="315.0" prefWidth="366.0">
+                                  <children>
+                                      <Label text=" Nom d'utilisateur (min 5 caractères):" textFill="#49dc55">
+                                          <font>
+                                              <Font name="System Bold" size="14.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="usernameField" />
+                                      <Label text=" Nom (min 5 caractères):" textFill="#49dc55">
+                                          <font>
+                                              <Font name="System Bold" size="14.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="nomField" />
+                                      <Label text=" Prénom (min 5 caractères):" textFill="#49dc55">
+                                          <font>
+                                              <Font name="System Bold" size="14.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="prenomField" prefHeight="26.0" prefWidth="348.0" />
+                                      <Label text=" Mot de passe (min 8 caractères, majuscule, chiffre):" textFill="#49dc55">
+                                          <font>
+                                              <Font name="System Bold" size="14.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="resultLabel" />
+                                      <PasswordField fx:id="passwordField" />
+                                        <Button fx:id="ajouterButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSubsButtonAction" prefWidth="181.0" stylesheets="@styles.css" text="S'inscrire">
+                                          <font>
+                                              <Font name="System Bold Italic" size="14.0" />
+                                          </font>
+                                      </Button>
+                                  </children>
+                              </VBox>
+                            </children>
+                        </VBox>
+                    </center>
+                </BorderPane>
+                <HBox alignment="CENTER" layoutX="483.0" />
+                  <ImageView fitHeight="86.0" fitWidth="125.0" layoutX="200.0" layoutY="14.0" opacity="0.74">
+                      <image>
+                          <Image url="@login2.png" />
+                      </image>
+                  </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

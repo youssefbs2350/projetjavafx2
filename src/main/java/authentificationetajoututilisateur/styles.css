@@ -1,0 +1,63 @@
+/* Style pour le bouton de connexion */
+.loginButton{
+    -fx-background-color: linear-gradient(to bottom right, #f34079, #fc894d);
+    -fx-border-radius: 0px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-family: "Codec cold";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-text-transform: uppercase;
+    -fx-cursor: hand; /* optionnel : changer le curseur en main lorsqu'il survole */
+}
+
+.loginButton:hover{
+    -fx-opacity: 0.75; /* réduit l'opacité lors du survol */
+}
+
+.loginButton:pressed {
+    -fx-opacity: 1.0; /* restaure l'opacité lors de l'activation */
+}
+
+/* Style pour le bouton d'inscription */
+.inscriptionButton {
+    -fx-background-color: linear-gradient(to right, #007bff, #0069d9); /* Dégradé de bleu pour le bouton inscription */
+    -fx-text-fill: white; /* Couleur du texte en blanc */
+    -fx-background-radius: 0; /* Pour rendre le bouton rectangulaire */
+    -fx-padding: 5px 10px; /* Ajustez les valeurs de remplissage pour obtenir une forme rectangulaire */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-weight: bold; /* Police en gras */
+    -fx-cursor: hand; /* Curseur de la souris en forme de main */
+}
+
+.inscriptionButton:hover {
+    -fx-opacity: 0.8; /* Réduire légèrement l'opacité au survol */
+}
+
+.inscriptionButton:pressed {
+    -fx-opacity: 0.6; /* Réduire l'opacité lorsqu'on appuie sur le bouton */
+}
+
+
+/* Style pour les boutons "Équipe", "Championnat", "Match" et "Détails Match" */
+.button {
+    /* Couleur de fond */
+    -fx-background-color: #4CAF50,
+    -fx-text-fill white, /* Couleur du texte */
+    -fx-font-size 14px, /* Taille de la police */
+    -fx-padding 8px 16px, /* Espacement interne */
+    -fx-border-radius 5px; /* Rayon de la bordure */
+}
+.ajouterButton{
+     /* Couleur de fond */
+    -fx-background-color: #4CAF50,
+    -fx-text-fill white, /* Couleur du texte */
+    -fx-font-size 14px, /* Taille de la police */
+    -fx-padding 8px 16px, /* Espacement interne */
+    -fx-border-radius 5px; /* Rayon de la bordure */
+}
+/* Style pour les boutons au survol */
+.button:hover {
+    -fx-background-color: rgba(62, 142, 63, 1); /* Couleur de fond au survol */
+}

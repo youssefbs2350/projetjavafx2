@@ -1,4 +1,4 @@
-package authentificationetajoututilisateur;
+/* authentificationetajoututilisateur;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,12 +6,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundSize;
 import javafx.geometry.Insets;
 
 public class AuthentificationAp extends Application {
@@ -68,12 +62,7 @@ public class AuthentificationAp extends Application {
         layout.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton, inscriptionButton, resultLabel);
         layout.setPadding(new Insets(20));
 
-        // Charger l'image de fond
-        Image image = new Image("file:D://background.jpg");
-        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-        Background background = new Background(backgroundImage);
-        layout.setBackground(background);
+
         Scene scene = new Scene(layout);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
@@ -89,6 +78,58 @@ public class AuthentificationAp extends Application {
         home.start(stage);
     }
 }
+
+/*package authentificationetajoututilisateur;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+public class AuthentificationAp {
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Button btnConnecter;
+
+    @FXML
+    private Button btnInscrire;
+
+    private Authentification auth = Authentification.getInstance();
+
+    @FXML
+    private void initialize() {
+        // Ajoutez ici tout code d'initialisation nécessaire
+    }
+
+    @FXML
+    private void handleConnexion() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        boolean isAuthenticated = auth.authenticate(username, password);
+
+        if (isAuthenticated) {
+            // Connexion réussie, afficher un message ou effectuer d'autres actions
+            System.out.println("Connexion réussie pour l'utilisateur: " + username);
+        } else {
+            // Authentification échouée, afficher un message d'erreur ou effectuer d'autres actions
+            System.out.println("Échec de la connexion. Vérifiez vos informations.");
+        }
+    }
+
+    @FXML
+    private void handleInscription() {
+        // Gérer l'action du bouton d'inscription ici
+        System.out.println("Action du bouton Inscription");
+    }
+}*/
+
 
 
 
