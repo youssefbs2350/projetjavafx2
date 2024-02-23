@@ -12,13 +12,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class Home extends Application {
     private String message;
+    private String username;
 
-    public Home(String message) {
+    public Home(String message, String username) {
         this.message = message;
+        this.username = username;
     }
 
     @Override
@@ -38,7 +41,12 @@ public class Home extends Application {
         // Nouveau bouton pour modifier les données de l'utilisateur
         Button modifierButton = createButton("Modifier");
         modifierButton.setOnAction(e -> {
-            ModifierUtilisateur modifierWindow = new ModifierUtilisateur();
+            ModifierUtilisateur modifierWindow = null;
+            try {
+                modifierWindow = new ModifierUtilisateur(username);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
 
             Stage stage2 = new Stage();
             modifierWindow.start(stage2);

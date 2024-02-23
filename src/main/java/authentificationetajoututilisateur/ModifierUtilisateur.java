@@ -18,8 +18,10 @@ import java.sql.SQLException;
 
 public class ModifierUtilisateur extends Application {
     private Connection connection;
+private String username;
 
-    public ModifierUtilisateur() {
+    public ModifierUtilisateur(String username) throws SQLException {
+        this.username = username;
         // Récupérer la connexion à la base de données à partir du singleton Authentification
         connection = Authentification.getInstance().getConnection();
     }
@@ -31,10 +33,6 @@ public class ModifierUtilisateur extends Application {
         Label titleLabel = new Label("Modifier Utilisateur");
         titleLabel.setTextFill(Color.WHITE);
         titleLabel.setFont(Font.font("Arial", 24));
-
-        Label usernameLabel = new Label("Nom d'utilisateur:");
-        TextField usernameField = new TextField();
-        usernameField.setPromptText("Entrez le nom d'utilisateur");
 
         Label prenomLabel = new Label("Prénom:");
         TextField prenomField = new TextField();
@@ -50,13 +48,12 @@ public class ModifierUtilisateur extends Application {
 
         Button modifierButton = new Button("Modifier");
         modifierButton.setOnAction(e -> {
-            String username = usernameField.getText();
             String prenom = prenomField.getText();
             String nom = nomField.getText();
             String password = passwordField.getText();
 
-            if (validerSaisie(username, prenom, nom, password)) {
-                if (modifierInformationsUtilisateur(username, prenom, nom, password)) {
+            if (validerSaisie(prenom, nom, password)) {
+                if (modifierInformationsUtilisateur(prenom, nom, password)) {
                     System.out.println("Informations de l'utilisateur modifiées avec succès.");
                     // Vous pouvez ajouter ici des actions supplémentaires après la modification
                 } else {
@@ -66,9 +63,9 @@ public class ModifierUtilisateur extends Application {
                 System.err.println("Veuillez remplir tous les champs correctement.");
             }
         });
-
+        System.out.println("username: " + username);
         VBox layout = new VBox(20);
-        layout.getChildren().addAll(titleLabel, usernameLabel, usernameField, prenomLabel, prenomField, nomLabel, nomField, passwordLabel, passwordField, modifierButton);
+        layout.getChildren().addAll(titleLabel, prenomLabel, prenomField, nomLabel, nomField, passwordLabel, passwordField, modifierButton);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(40));
         layout.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -78,32 +75,78 @@ public class ModifierUtilisateur extends Application {
         primaryStage.show();
     }
 
-    private boolean validerSaisie(String username, String prenom, String nom, String password) {
-        return !username.isEmpty() && !prenom.isEmpty() && !nom.isEmpty() && !password.isEmpty();
+    private boolean validerSaisie(String prenom, String nom, String password) {
+        boolean saisieValide = true;
+
+        // Vérifier si le prénom contient au moins 5 caractères
+        if (prenom.length() < 5) {
+            System.err.println("Le prénom doit contenir au moins 5 caractères.");
+            saisieValide = false;
+        }
+
+        // Vérifier si le nom contient au moins 5 caractères
+        if (nom.length() < 5) {
+            System.err.println("Le nom doit contenir au moins 5 caractères.");
+            saisieValide = false;
+        }
+
+        // Vérifier si le mot de passe contient au moins 8 caractères
+        if (password.length() < 8) {
+            System.err.println("Le mot de passe doit contenir au moins 8 caractères.");
+            saisieValide = false;
+        }
+
+        // Vérifier si le mot de passe contient au moins une lettre majuscule
+        if (!password.matches(".*[A-Z].*")) {
+            System.err.println("Le mot de passe doit contenir au moins une lettre majuscule.");
+            saisieValide = false;
+        }
+
+        // Vérifier si le mot de passe contient au moins une lettre minuscule
+        if (!password.matches(".*[a-z].*")) {
+            System.err.println("Le mot de passe doit contenir au moins une lettre minuscule.");
+            saisieValide = false;
+        }
+
+        // Vérifier si le mot de passe contient au moins un chiffre
+        if (!password.matches(".*\\d.*")) {
+            System.err.println("Le mot de passe doit contenir au moins un chiffre.");
+            saisieValide = false;
+        }
+
+        return saisieValide;
     }
 
-    private boolean modifierInformationsUtilisateur(String username, String prenom, String nom, String password) {
+
+    private boolean modifierInformationsUtilisateur(String prenom, String nom, String password) {
         try {
-            // Préparer la requête de mise à jour
-            String query = "UPDATE utilisateurs SET prenom = ?, nom = ?, password = ? WHERE username = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, prenom);
-            preparedStatement.setString(2, nom);
-            preparedStatement.setString(3, password);
-            preparedStatement.setString(4, username);
+            if (username != null) {
+                // Préparer la requête de mise à jour
+                String query = "UPDATE utilisateurs SET prenom = ?, nom = ?, password = ? WHERE username = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, prenom);
+                preparedStatement.setString(2, nom);
+                preparedStatement.setString(3, password);
+                preparedStatement.setString(4, username);
 
-            // Exécuter la requête de mise à jour
-            int rowsAffected = preparedStatement.executeUpdate();
+                // Exécuter la requête de mise à jour
+                int rowsAffected = preparedStatement.executeUpdate();
 
-            // Vérifier si la mise à jour a réussi
-            return rowsAffected > 0;
+                // Vérifier si la mise à jour a réussi
+                return rowsAffected > 0;
+            } else {
+                System.err.println("L'utilisateur n'existe pas.");
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
+
     public static void main(String[] args) {
         launch(args);
     }
+
 }

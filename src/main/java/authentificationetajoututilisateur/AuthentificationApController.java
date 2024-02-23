@@ -54,6 +54,7 @@
     import java.io.IOException;
     import java.io.FileInputStream;
     import java.net.URL;
+    import java.sql.SQLException;
     import java.util.ResourceBundle;
 
     import javafx.fxml.*;
@@ -72,17 +73,26 @@
         @FXML
         private Label resultLabel;
 
+
+        public TextField getUsernameField() {
+            return usernameField;
+        }
+
         @FXML
-        private void handleLoginButtonAction(ActionEvent event) {
+        private void handleLoginButtonAction(ActionEvent event) throws SQLException {
             String username = usernameField.getText();
             String password = passwordField.getText();
+
 
             // Vérifier les informations d'identification en utilisant le singleton Authentification
             if (Authentification.getInstance().authenticate(username, password)) {
                 // Les informations d'identification sont correctes
                 resultLabel.setText("Connexion réussie !");
+
                 String message = "Bonjour " + username + " !";
-                ouvrirHomeStage(message);
+                System.out.println("username "+username);
+                ouvrirHomeStage(message, username);
+
             } else {
                 // Nom d'utilisateur ou mot de passe incorrect
                 resultLabel.setText("Nom d'utilisateur ou mot de passe incorrect !");
@@ -112,10 +122,13 @@
         }
 
         // Méthode pour ouvrir un nouveau stage avec la classe Home
-        private void ouvrirHomeStage(String message) {
+        private void ouvrirHomeStage(String message , String username) {
 
                 // Charger le fichier FXML Home.fxml
-                Home home = new Home(message);
+
+
+
+                Home home = new Home(message ,username);
                 Stage stage = new Stage();
                 home.start(stage);
 

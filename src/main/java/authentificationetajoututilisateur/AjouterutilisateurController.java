@@ -33,7 +33,11 @@ public class AjouterutilisateurController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        authentification = Authentification.getInstance();
+        try {
+            authentification = Authentification.getInstance();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
