@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -16,8 +18,8 @@ public class Ajoutchampionnat extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws SQLException {
-      //  Connexion à la base de données (commenté pour cet exemple)
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
+       // ImageView background = new ImageView(new Image(getClass().getResourceAsStream("C:\\Users\\Administrator\\Desktop\\5571144.jpg")));
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label(); // Ajout d'un label vide
