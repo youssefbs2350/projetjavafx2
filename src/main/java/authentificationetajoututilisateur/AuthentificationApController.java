@@ -103,7 +103,8 @@
         @FXML
         private void handleInscriptionButtonAction(ActionEvent event) {
             try {
-                String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\Ajouterutilisateur.fxml";
+                String fxmlDocPath = " C:\\Users\\Administrator\\Desktop\\project java FX\\projetjavafx2\\src\\main\\java\\authentificationetajoututilisateur\\Ajouterutilisateur.fxml";
+             //   C:\Users\Administrator\Desktop\project java FX\projetjavafx2\src\main\java\authentificationetajoututilisateur
                 FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
                 AnchorPane root = (AnchorPane) loader2.load(fxmlStream);
                 // Créer une nouvelle scène avec le contenu du fichier FXML chargé

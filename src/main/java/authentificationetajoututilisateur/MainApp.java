@@ -44,7 +44,7 @@ public class MainApp extends Application {
    @Override
    public void start(Stage stage) {
        try {
-           String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
+           String fxmlDocPath = "C:\\Users\\Administrator\\Desktop\\project java FX\\projetjavafx2\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
            FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
            AnchorPane root = (AnchorPane) loader.load(fxmlStream);
            Scene scene = new Scene(root,612,293);

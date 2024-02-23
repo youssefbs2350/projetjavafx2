@@ -14,10 +14,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
+
 import java.util.Objects;
->>>>>>> 1ba4bab1d0d56cd5fd78360158ced88078c77f61
+
 
 public class Home extends Application {
     private String message;
