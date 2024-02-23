@@ -11,6 +11,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundSize;
+import java.io.File;
 import java.sql.*;
 public class Ajoutchampionnat extends Application {
     public static void main(String[] args) {
@@ -19,7 +25,6 @@ public class Ajoutchampionnat extends Application {
     @Override
     public void start(Stage primaryStage) throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-       // ImageView background = new ImageView(new Image(getClass().getResourceAsStream("C:\\Users\\Administrator\\Desktop\\5571144.jpg")));
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label(); // Ajout d'un label vide
@@ -49,9 +54,13 @@ public class Ajoutchampionnat extends Application {
             }
         });
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
-        retourchampioonat.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
+        retourchampioonat.setStyle("-fx-background-color: #f44336; -fx-textù-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
+        root.setBackground(new Background(new BackgroundImage(
+                new Image(new File("C:\\Users\\Administrator\\Desktop\\1.jpg").toURI().toString(), true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         titleBox.setStyle("-fx-alignment: center;"); // Centrer le titre horizontalement
         HBox buttonsBox = new HBox(boutonConfirmer, retourchampioonat);
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
