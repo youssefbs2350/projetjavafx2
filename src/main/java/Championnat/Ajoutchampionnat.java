@@ -70,7 +70,7 @@ public class Ajoutchampionnat extends Application {
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
-                new Image(new File("C:\\Users\\Administrator\\Desktop\\1.jpg").toURI().toString(), true),
+                new Image(new File("C:\\Users\\Administrator\\Desktop\\3.jpg").toURI().toString(), true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         titleBox.setStyle("-fx-alignment: center;"); // Centrer le titre horizontalement
