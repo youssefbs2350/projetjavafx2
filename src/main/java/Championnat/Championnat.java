@@ -12,7 +12,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.sql.*;
+
 public class Championnat extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
     @Override
     public void start(Stage primaryStage) throws SQLException {
         Connection connection = null;
@@ -143,7 +147,6 @@ public class Championnat extends Application {
         primaryStage.show();
     }
     }
-    public static void main(String[] args) {
-        launch(args);
-    }
+
+
 }
