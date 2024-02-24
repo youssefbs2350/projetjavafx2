@@ -1,12 +1,12 @@
 package Teams;
+
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChampionnatSelector {
 
@@ -14,40 +14,27 @@ public class ChampionnatSelector {
         VBox vbox = new VBox(10);
 
         try {
-
             Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
             Statement statement = connexion.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT championnatName FROM championnat");
+            ResultSet resultSet = statement.executeQuery("SELECT championnatid, championnatName FROM championnat");
 
-            // Création d'une liste pour stocker les noms des championnats
-            List<String> championnats = new ArrayList<>();
+            Map<Integer, String> championnatsMap = new HashMap<>();
             while (resultSet.next()) {
-                championnats.add(resultSet.getString("championnatName"));
+                int championnatid = resultSet.getInt("championnatid");
+                String championnatName = resultSet.getString("championnatName");
+                championnatsMap.put(championnatid, championnatName);
             }
 
-            // Création du ComboBox avec les championnats
-            ComboBox<String> comboBoxChampionnats = new ComboBox<>(FXCollections.observableArrayList(championnats));
+            ComboBox<Map.Entry<Integer, String>> comboBoxChampionnats = new ComboBox<>(FXCollections.observableArrayList(championnatsMap.entrySet()));
+            comboBoxChampionnats.setConverter(new ComboBoxStringConverter());
 
-            // Label pour afficher le championnat sélectionné
-            Label labelNomChampionnat = new Label("Nom du championnat :");
-            labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
+            vbox.getChildren().addAll(comboBoxChampionnats);
 
-            // Écouteur pour le changement de sélection dans le ComboBox
-            comboBoxChampionnats.setOnAction(e -> {
-                // Mettre à jour le label avec le championnat sélectionné
-                labelNomChampionnat.setText("Nom du championnat sélectionné : " + comboBoxChampionnats.getValue());
-            });
-
-            vbox.getChildren().addAll(labelNomChampionnat, comboBoxChampionnats);
-
-            connexion.close(); // Fermeture de la connexion à la base de données
+            connexion.close();
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
 
         return vbox;
-
     }
 }
-

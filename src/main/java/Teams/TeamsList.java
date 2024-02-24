@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -28,7 +27,7 @@ public class TeamsList extends Application {
         // Connexion à la base de données
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx-3", "root", "");
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM teams")) {
+             ResultSet resultSet = statement.executeQuery("SELECT teams.teamId, teams.teamName, teams.nbrjoueurs, championnat.championnatName FROM teams JOIN championnat ON teams.championnatid = championnat.championnatId")) {
 
             Label emptyLabel1 = new Label(); // Ajout d'un label vide
             Label emptyLabel2 = new Label(); // Ajout d'un label vide
@@ -58,8 +57,14 @@ public class TeamsList extends Application {
                 return rowData != null && rowData.length > 2 ? new javafx.beans.property.SimpleStringProperty(rowData[2]) : null;
             });
 
+            TableColumn<String[], String> column4 = new TableColumn<>("Nom du championnat");
+            column4.setCellValueFactory(param -> {
+                String[] rowData = param.getValue();
+                return rowData != null && rowData.length > 3 ? new javafx.beans.property.SimpleStringProperty(rowData[3]) : null;
+            });
+
             // Ajout des colonnes à la TableView
-            tableView.getColumns().addAll(column1, column2, column3);
+            tableView.getColumns().addAll(column1, column2, column3, column4);
 
             // Récupération des données de la base de données
             List<String[]> data = new ArrayList<>();
@@ -67,10 +72,17 @@ public class TeamsList extends Application {
                 String[] row = new String[]{
                         resultSet.getString("teamId"),
                         resultSet.getString("teamName"),
-                        resultSet.getString("nbrjoueurs")
+                        resultSet.getString("nbrjoueurs"),
+                        resultSet.getString("championnatName")
                 };
                 data.add(row);
             }
+
+            ajouterEquipe.setOnAction(event -> {
+                primaryStage.close();
+                Ajout_Team ajoutTeam = new Ajout_Team();
+                ajoutTeam.start(new Stage());
+            });
 
             // Ajout des données à la TableView
             tableView.setItems(FXCollections.observableArrayList(data));
