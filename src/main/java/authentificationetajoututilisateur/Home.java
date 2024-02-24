@@ -58,7 +58,7 @@ public class Home extends Application {
         layout.setPadding(new Insets(20, 20, 20, 20));
 
         // Chargement de l'image depuis le fichier
-        Image img = new Image("D:\\img.jpg");
+        Image img = new Image("C:\\Users\\Dell\\Desktop\\javafx\\img.jpg");
         layout.setBackground(new Background(new BackgroundFill(new ImagePattern(img), null, null)));
 
         Scene scene = new Scene(layout, 400, 120);

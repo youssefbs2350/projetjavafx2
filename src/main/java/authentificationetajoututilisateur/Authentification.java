@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Authentification {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/projetjavafx";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/projetjavafx-3";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
 

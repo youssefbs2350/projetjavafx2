@@ -1,5 +1,6 @@
-package authentificationetajoututilisateur;
 
+
+package Teams;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -12,8 +13,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-        AuthentificationAp authApp = new AuthentificationAp();
-        authApp.start(primaryStage);
+        Ajout_Team Ajout_Team = new Ajout_Team();
+        try {
+            Ajout_Team.start(primaryStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
