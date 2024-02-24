@@ -22,11 +22,13 @@ public class Home extends Application {
     private String message;
     private String username;
 
+    public Home() {
+
+    }
     public Home(String message, String username) {
         this.message = message;
         this.username = username;
     }
-
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Page d'accueil");
