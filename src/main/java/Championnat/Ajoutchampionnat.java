@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -27,27 +28,31 @@ public class Ajoutchampionnat extends Application {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        Label emptyLabel1 = new Label(); // Ajout d'un label vide
-        Label emptyLabel2 = new Label(); // Ajout d'un label vide
-        Label emptyLabel3 = new Label(); // Ajout d'un label vide
-        Label emptyLabel4 = new Label(); // Ajout d'un label vide
-        Label emptyLabel5 = new Label(); // Ajout d'un label vide
-        Label emptyLabel6 = new Label(); // Ajout d'un label vide
+        Label emptyLabel1 = new Label();
+        Label emptyLabel2 = new Label();
+        Label emptyLabel3 = new Label();
+        Label emptyLabel4 = new Label();
+        Label emptyLabel5 = new Label();
+        Label emptyLabel6 = new Label();
+        Label emptyLabel7 = new Label();
         Label labelNomChampionnat = new Label("Nom du championnat :");
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
+
         TextField textFieldNomChampionnat = new TextField();
+        Label labelDate = new Label("Date du championnat :");
+        labelDate.setStyle("-fx-font-weight: bold;");
+        DatePicker datePicker = new DatePicker();
+        Label labelType = new Label("Type du championnat :");
+        labelType.setStyle("-fx-font-weight: bold;");
+        TextField textFieldType = new TextField();
         textFieldNomChampionnat.setPrefWidth(20);
         Button boutonConfirmer = new Button("Confirmer");
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = textFieldNomChampionnat.getText();
-             insererChampionnatDansLaBaseDeDonnees(nomChampionnat);
-            primaryStage.close();
-            Championnat retourpage = new Championnat();
-            try {
-                retourpage.start(new Stage());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            Date dateChampionnat = datePicker.getValue() != null ? Date.valueOf(datePicker.getValue()) : null;
+            String typeChampionnat = textFieldType.getText();
+            insererChampionnatDansLaBaseDeDonnees(nomChampionnat, dateChampionnat, typeChampionnat);
+            // Votre code existant...
         });
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
@@ -61,22 +66,22 @@ public class Ajoutchampionnat extends Application {
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
         buttonsBox.setSpacing(400); // Espacement entre les boutons
-        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel6, textFieldNomChampionnat , emptyLabel4, emptyLabel5 , buttonsBox);
+        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel4, textFieldNomChampionnat , emptyLabel5,labelType ,emptyLabel6, datePicker, emptyLabel7 , buttonsBox);
         Scene scene = new Scene(root, 720, 600);
         // Configuration de la scène et affichage de la fenêtre
         primaryStage.setScene(scene);
         primaryStage.setTitle("Ajouter un championnat");
         primaryStage.show();
     }
-    private void insererChampionnatDansLaBaseDeDonnees(String nomChampionnat) {
+    private void insererChampionnatDansLaBaseDeDonnees(String nomChampionnat, Date dateAttribut, String typeAttribut) {
         try {
-         //   Connexion à la base de données (commenté pour cet exemple)
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-            String sql = "INSERT INTO championship (championship_name) VALUES (?)";
+            String sql = "INSERT INTO championship (championship_name, date_attribut, type_attribut) VALUES (?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nomChampionnat);
+            statement.setDate(2, dateAttribut);
+            statement.setString(3, typeAttribut);
             statement.executeUpdate();
-        //    System.out.println("Championnat inséré dans la base de données : " + nomChampionnat);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

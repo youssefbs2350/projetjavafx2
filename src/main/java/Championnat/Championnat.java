@@ -21,8 +21,12 @@ public class Championnat extends Application {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         statement = connection.createStatement();
         championnatid = statement.executeQuery("SELECT * FROM championship");
-        Label emptyLabel1 = new Label(); // Ajout d'un label vide
-        Label emptyLabel2 = new Label(); // Ajout d'un label vide
+        Label emptyLabel1 = new Label();
+        Label emptyLabel2 = new Label();
+        Label emptyLabel3 = new Label();
+        Label emptyLabel4 = new Label();
+        Label emptyLabel5 = new Label();
+        Label emptyLabel6 = new Label();
         Button ajouetrchampionnat = new Button("Ajouter un champpionnat");
         Label titleLabel = new Label("Les Championnats");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
@@ -131,8 +135,8 @@ public class Championnat extends Application {
         HBox buttonBox = new HBox(ajouetrchampionnat,closeButton);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
         buttonBox.setSpacing(400); // Espacement entre les boutons
-        VBox.setMargin(buttonBox, new Insets(0, 0, 0, 50));
-        VBox root = new VBox(titleLabel,tableView,emptyLabel1,emptyLabel2,buttonBox);
+        VBox.setMargin(buttonBox, new Insets(0, 0, 20, 50));
+        VBox root = new VBox(emptyLabel4,titleLabel,emptyLabel1,tableView,emptyLabel2,buttonBox);
         Scene scene = new Scene(root, 720, 500);
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
