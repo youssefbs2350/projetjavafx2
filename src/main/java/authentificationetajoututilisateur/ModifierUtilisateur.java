@@ -31,7 +31,7 @@ private String username;
         primaryStage.setTitle("Modifier Utilisateur");
 
         Label titleLabel = new Label("Modifier Utilisateur");
-        titleLabel.setTextFill(Color.WHITE);
+        titleLabel.setTextFill(Color.BLACK);
         titleLabel.setFont(Font.font("Arial", 24));
 
         Label prenomLabel = new Label("Prénom:");
@@ -47,6 +47,12 @@ private String username;
         passwordField.setPromptText("Entrez le mot de passe");
 
         Button modifierButton = new Button("Modifier");
+        modifierButton.setStyle(" -fx-background-color: linear-gradient(to right, #007bff, #0069d9); /* Dégradé de bleu pour le bouton inscription */\n" +
+                "    -fx-text-fill: white; /* Couleur du texte en blanc */\n" +
+                "    -fx-background-radius: 0; /* Pour rendre le bouton rectangulaire */\n" +
+                "    -fx-padding: 5px 10px; /* Ajustez les valeurs de remplissage pour obtenir une forme rectangulaire */\n" +
+                "    -fx-font-size: 16px; /* Taille de la police */\n" +
+                "    -fx-font-weight: bold; /* Police en gras */\n");
         modifierButton.setOnAction(e -> {
             String prenom = prenomField.getText();
             String nom = nomField.getText();

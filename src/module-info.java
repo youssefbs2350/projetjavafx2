@@ -12,6 +12,7 @@ requires  java.sql;
     requires javafx.controls;
     requires transitive javafx.base;
     requires transitive javafx.graphics;
-    exports authentificationetajoututilisateur to javafx.graphics , javafx.fxml , javafx.controls , javafx.base;
-    opens authentificationetajoututilisateur to javafx.fxml , javafx.graphics, javafx.controls , javafx.base;
+    requires javafx.media;
+    exports authentificationetajoututilisateur to javafx.graphics , javafx.fxml , javafx.controls , javafx.base , javafx.media;
+    opens authentificationetajoututilisateur to javafx.fxml , javafx.graphics, javafx.controls , javafx.base, javafx.media;
 }

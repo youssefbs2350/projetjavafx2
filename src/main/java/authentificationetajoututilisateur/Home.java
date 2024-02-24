@@ -99,7 +99,7 @@ public class Home extends Application {
         layout.setBackground(new Background(background));
 
         Scene scene = new Scene(layout, 800, 600);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/style.css")).toExternalForm());
         primaryStage.setScene(scene);
 
         primaryStage.setMaximized(true);
