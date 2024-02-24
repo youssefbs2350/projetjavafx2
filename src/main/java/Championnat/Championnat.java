@@ -1,5 +1,6 @@
 package Championnat;
 
+import authentificationetajoututilisateur.Home;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,6 +34,7 @@ public class Championnat extends Application {
         Label emptyLabel6 = new Label();
 
         Button ajouterChampionnat = new Button("Ajouter Championnat");
+        ajouterChampionnat.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold;");
         Label titleLabel = new Label("Les Championnats");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
 
@@ -137,9 +139,9 @@ public class Championnat extends Application {
             String[] rowData = param.getValue();
             return rowData != null && rowData.length > 3 ? new javafx.beans.property.SimpleStringProperty(rowData[3]) : null;
         });
-/*
+
         ajouterChampionnat.setOnAction(event -> {
-            AjoutChampionnat ajoutChampionnat = new AjoutChampionnat();
+            Ajoutchampionnat ajoutChampionnat = new Ajoutchampionnat();
             try {
                 primaryStage.close();
                 ajoutChampionnat.start(new Stage());
@@ -147,7 +149,7 @@ public class Championnat extends Application {
                 e.printStackTrace();
             }
         });
-*/
+
         tableView.getColumns().addAll(column1, column2, column5, column6,column3 ,column4);
 
         while (championnatid.next()) {
@@ -160,12 +162,16 @@ public class Championnat extends Application {
             tableView.getItems().add(rowData);
         }
 
-        Button closeButton = new Button("Fermer");
-        closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
-        closeButton.setOnAction(event -> primaryStage.close());
 
-        ajouterChampionnat.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
-        closeButton.setOnAction(event -> primaryStage.close());
+        Button closeButton = new Button("Accueille");
+        closeButton.setStyle("-fx-background-color: #4c29ee; -fx-text-fill: white; -fx-font-weight: bold;");
+        closeButton.setOnAction(event -> {
+            Home home = new Home() ;
+            primaryStage.close();
+            home.start(new Stage());
+        });
+
+
 
         HBox buttonBox = new HBox(ajouterChampionnat, closeButton);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
@@ -174,7 +180,6 @@ public class Championnat extends Application {
 
         VBox root = new VBox(emptyLabel4, titleLabel, emptyLabel1, tableView, emptyLabel2, buttonBox);
         Scene scene = new Scene(root, 720, 500);
-
         primaryStage.setTitle("Championnat");
         primaryStage.setScene(scene);
         primaryStage.show();

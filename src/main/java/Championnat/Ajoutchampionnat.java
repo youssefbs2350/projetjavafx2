@@ -1,4 +1,5 @@
 package Championnat;
+import authentificationetajoututilisateur.Home;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -42,13 +43,17 @@ public class Ajoutchampionnat extends Application {
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         labelDate.setStyle("-fx-font-weight: bold;");
         TextField nom = new TextField();
-        TextField type = new TextField();
+       // TextField type = new TextField();
+        ComboBox<String> typeComboBox = new ComboBox<>();
+        typeComboBox.getItems().addAll("Type 1", "Type 2", "Type 3");
+        typeComboBox.setValue("Type 1");
+
         DatePicker datePicker = new DatePicker();
         labelType.setStyle("-fx-font-weight: bold;");
         Button boutonConfirmer = new Button("Confirmer");
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = nom.getText();
-            String typeChampionnat = type.getText();
+            String typeChampionnat = typeComboBox.getValue();
             if (nomChampionnat.isEmpty() || typeChampionnat.isEmpty()) {
                 // Afficher un message d'erreur à l'utilisateur
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -58,28 +63,41 @@ public class Ajoutchampionnat extends Application {
                 alert.showAndWait();
             } else {
                 insert(nomChampionnat,typeChampionnat);
-            primaryStage.close();
+                primaryStage.close();
+                Championnat retourpage = new Championnat();
+                try {
+                    retourpage.start(new Stage());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }});
+
+        Button retour = new Button("Retour");
+        retour.setStyle("-fx-background-color: #4c29ee; -fx-text-fill: white; -fx-font-weight: bold;");
+        retour.setOnAction(event -> {
             Championnat retourpage = new Championnat();
+            primaryStage.close();
             try {
                 retourpage.start(new Stage());
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
-        }});
+        });
+
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
-                new Image(new File("C:\\Users\\Administrator\\Desktop\\3.jpg").toURI().toString(), true),
+                new Image(new File("C:\\Users\\Administrator\\Desktop\\javafx\\1014946_6272.jpg").toURI().toString(), true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         titleBox.setStyle("-fx-alignment: center;"); // Centrer le titre horizontalement
-        HBox buttonsBox = new HBox(boutonConfirmer);
+        HBox buttonsBox = new HBox(boutonConfirmer,retour);
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
         buttonsBox.setSpacing(400); // Espacement entre les boutons
-        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel4, nom , emptyLabel5, labelType , type ,emptyLabel6,  emptyLabel7 , buttonsBox);
-        Scene scene = new Scene(root, 500, 400);
+        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel4, nom , emptyLabel5, labelType , typeComboBox ,emptyLabel6,  emptyLabel7 , buttonsBox);
+        Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Ajouter un championnat");
         primaryStage.show();
