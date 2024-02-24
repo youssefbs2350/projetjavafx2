@@ -1,4 +1,4 @@
-module authentificationetajoututilisateur {
+module Championnat {
 requires  java.sql;
     requires javafx.fxml;
     requires javafx.controls;
@@ -7,6 +7,6 @@ requires  java.sql;
     exports authentificationetajoututilisateur to javafx.graphics , javafx.fxml , javafx.controls , javafx.base;
     opens authentificationetajoututilisateur to javafx.fxml , javafx.graphics, javafx.controls , javafx.base;
     exports Championnat ;
-    opens Championnat to javafx.fxml ;
+    opens Championnat  ;
 }
 
