@@ -41,10 +41,6 @@ public class Ajoutchampionnat extends Application {
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = textFieldNomChampionnat.getText();
              insererChampionnatDansLaBaseDeDonnees(nomChampionnat);
-            System.out.println("Nom du championnat confirmé : " + nomChampionnat);
-        });
-        Button retourchampioonat = new Button("Championnat List");
-        retourchampioonat.setOnAction(event -> {
             primaryStage.close();
             Championnat retourpage = new Championnat();
             try {
@@ -54,7 +50,6 @@ public class Ajoutchampionnat extends Application {
             }
         });
         boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
-        retourchampioonat.setStyle("-fx-background-color: #f44336; -fx-textù-fill: white; -fx-font-weight: bold;");
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
@@ -62,7 +57,7 @@ public class Ajoutchampionnat extends Application {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         titleBox.setStyle("-fx-alignment: center;"); // Centrer le titre horizontalement
-        HBox buttonsBox = new HBox(boutonConfirmer, retourchampioonat);
+        HBox buttonsBox = new HBox(boutonConfirmer);
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
         buttonsBox.setSpacing(400); // Espacement entre les boutons

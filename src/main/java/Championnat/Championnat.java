@@ -126,7 +126,6 @@ public class Championnat extends Application {
         Button closeButton = new Button("Fermer");
         closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());
-        closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
         ajouetrchampionnat.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
         closeButton.setOnAction(event -> primaryStage.close());
         HBox buttonBox = new HBox(ajouetrchampionnat,closeButton);
