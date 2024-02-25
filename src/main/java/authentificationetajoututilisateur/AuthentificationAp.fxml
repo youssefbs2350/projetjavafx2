@@ -14,29 +14,17 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="293.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentificationetajoututilisateur.AuthentificationApController">
-    <ImageView fitHeight="323.0" fitWidth="616.0" layoutX="-3.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@lingrad2.png" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentificationetajoututilisateur.AuthentificationApController">
+    <ImageView fitHeight="736.0" fitWidth="1280.0" layoutX="-3.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@lingrad22.png" />
     </ImageView>
     <VBox layoutY="168.0" prefHeight="122.0" prefWidth="303.0">
-        <BorderPane prefHeight="94.0" prefWidth="330.0">
-            <left>
-                <Label text="Mot de passe:                  " textFill="#05d121" BorderPane.alignment="CENTER">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-            </left>
-            <center>
-                <PasswordField fx:id="passwordField" opacity="0.7" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER" />
-            </center>
-        </BorderPane>
         <Label fx:id="resultLabel" />
     </VBox>
-    <ImageView fitHeight="102.0" fitWidth="100.0" layoutX="175.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="102.0" fitWidth="100.0" layoutX="610.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@login2.png" />
     </ImageView>
-    <Button fx:id="loginButton" layoutX="399.0" layoutY="101.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleLoginButtonAction" prefHeight="30.0" prefWidth="100.0" styleClass="loginButton" stylesheets="@styles.css" text="Se connecter">
+    <Button fx:id="loginButton" layoutX="887.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleLoginButtonAction" prefHeight="30.0" prefWidth="100.0" styleClass="loginButton" stylesheets="@styles.css" text="Se connecter">
         <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                 <stops>
@@ -54,7 +42,7 @@
             </LinearGradient>
         </textFill>
     </Button>
-    <Button fx:id="inscriptionButton" layoutX="399.0" layoutY="194.0" onAction="#handleInscriptionButtonAction" prefHeight="30.0" prefWidth="100.0" styleClass="inscriptionButton" stylesheets="@styles.css" text="Inscription">
+    <Button fx:id="inscriptionButton" layoutX="887.0" layoutY="430.0" onAction="#handleInscriptionButtonAction" prefHeight="30.0" prefWidth="100.0" styleClass="inscriptionButton" stylesheets="@styles.css" text="Inscription">
         <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                 <stops>
@@ -72,16 +60,34 @@
             </LinearGradient>
         </textFill>
     </Button>
-    <BorderPane layoutY="65.0" prefHeight="122.0" prefWidth="303.0">
+    <BorderPane layoutX="303.0" layoutY="184.0" prefHeight="122.0" prefWidth="460.0">
         <left>
-            <Label prefHeight="42.0" prefWidth="161.0" text="Nom d'utilisateur:     " textFill="#06d722" BorderPane.alignment="CENTER">
+            <Label prefHeight="42.0" prefWidth="226.0" text="Nom d'utilisateur:     " textFill="#06d722" BorderPane.alignment="CENTER">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold" size="20.0" />
                 </font>
             </Label>
         </left>
         <center>
-            <TextField fx:id="usernameField" opacity="0.7" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER" />
+            <TextField fx:id="usernameField" opacity="0.7" prefHeight="26.0" prefWidth="258.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font></TextField>
         </center>
     </BorderPane>
+     <BorderPane layoutX="303.0" layoutY="407.0" prefHeight="94.0" prefWidth="460.0">
+         <left>
+             <Label text="Mot de passe:                 " textFill="#05d121" BorderPane.alignment="CENTER">
+                 <font>
+                     <Font name="System Bold" size="20.0" />
+                 </font>
+             </Label>
+         </left>
+         <center>
+             <PasswordField fx:id="passwordField" opacity="0.7" prefHeight="26.0" prefWidth="211.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font></PasswordField>
+         </center>
+     </BorderPane>
 </AnchorPane>

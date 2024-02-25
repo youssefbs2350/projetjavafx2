@@ -79,7 +79,8 @@ public class MainApp extends Application {
                     String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
                     FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
                     AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-                    Scene scene = new Scene(root, 612, 293);
+                    Scene scene = new Scene(root, 1261, 622);
+
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.setTitle("Authentification JavaFX");
@@ -96,6 +97,8 @@ public class MainApp extends Application {
             introRoot.getChildren().add(introView);
             Scene introScene = new Scene(introRoot, 1280, 720);
             primaryStage.setScene(introScene);
+            stage.setResizable(false);
+            stage.setTitle("welcome to our Application");
             primaryStage.show();
 
             // Lecture de la vidéo d'introduction
