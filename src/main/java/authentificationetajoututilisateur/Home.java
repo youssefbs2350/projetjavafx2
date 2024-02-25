@@ -1,3 +1,4 @@
+
 package authentificationetajoututilisateur;
 
 import javafx.application.Application;
@@ -34,9 +35,13 @@ public class Home extends Application {
 
         // Boutons
         Button equipeButton = createButton("Équipe");
+        equipeButton.getStyleClass().add("detailsMatchButton");
         Button championnatButton = createButton("Championnat");
+        championnatButton.getStyleClass().add("detailsMatchButton");
         Button matchButton = createButton("Match");
+        matchButton.getStyleClass().add("detailsMatchButton");
         Button detailsMatchButton = createButton("Détails Match");
+        detailsMatchButton.getStyleClass().add("detailsMatchButton");
 
      /*   championnatButton.setOnAction(e ->{
             Championnat champ = new Championnat();
@@ -51,6 +56,7 @@ public class Home extends Application {
 
         // Nouveau bouton pour modifier les données de l'utilisateur
         Button modifierButton = createButton("Modifier");
+        modifierButton.getStyleClass().add("matchButton");
         modifierButton.setOnAction(e -> {
             ModifierUtilisateur modifierWindow = null;
             try {
@@ -71,6 +77,7 @@ public class Home extends Application {
 
         // Bouton Fermer
         Button fermerButton = new Button("Fermer");
+        fermerButton.getStyleClass().add("fermerButton");
         fermerButton.setOnAction(e -> primaryStage.close());
 
         fermerButton.setPrefSize(120, 60);
