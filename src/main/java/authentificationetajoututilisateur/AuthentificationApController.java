@@ -96,7 +96,7 @@ public class AuthentificationApController implements Initializable {
             // Les informations d'identification sont correctes
             resultLabel.setText("Connexion réussie !");
 
-            String message = "Bonjour " + username + " !";
+            String message = "  Bonjour " + username + " !";
             System.out.println("username "+username);
             if(getUserType(username).equals("admin"))
                 ouvrirHomeStage(message, username);
