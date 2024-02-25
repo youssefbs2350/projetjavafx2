@@ -54,6 +54,9 @@
     import java.io.IOException;
     import java.io.FileInputStream;
     import java.net.URL;
+    import java.sql.Connection;
+    import java.sql.PreparedStatement;
+    import java.sql.ResultSet;
     import java.sql.SQLException;
     import java.util.ResourceBundle;
 
@@ -72,7 +75,11 @@
 
         @FXML
         private Label resultLabel;
+        private Connection connection;
 
+        public AuthentificationApController() throws SQLException {
+            connection = Authentification.getInstance().getConnection();
+        }
 
         public TextField getUsernameField() {
             return usernameField;
@@ -91,14 +98,35 @@
 
                 String message = "Bonjour " + username + " !";
                 System.out.println("username "+username);
-                ouvrirHomeStage(message, username);
+                if(getUserType(username).equals("admin"))
+                    ouvrirHomeStage(message, username);
+                else
+                    ouvrirUserHomeStage(message, username);
 
             } else {
                 // Nom d'utilisateur ou mot de passe incorrect
                 resultLabel.setText("Nom d'utilisateur ou mot de passe incorrect !");
             }
         }
+        private String getUserType(String username) throws SQLException {
+            // Créer la requête SQL pour obtenir le type d'utilisateur en fonction du nom d'utilisateur
+            String query = "SELECT type FROM utilisateurs WHERE username = ?";
 
+            try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+                // Remplacer le paramètre dans la requête par le nom d'utilisateur fourni
+                pstmt.setString(1, username);
+
+                try (ResultSet resultSet = pstmt.executeQuery()) {
+                    // Si l'utilisateur est trouvé, retourner le type d'utilisateur
+                    if (resultSet.next()) {
+                        return resultSet.getString("type");
+                    } else {
+                        // Si l'utilisateur n'est pas trouvé, retourner une valeur par défaut ou lever une exception
+                        throw new SQLException("Utilisateur introuvable: " + username);
+                    }
+                }
+            }
+        }
 
         @FXML
         private void handleInscriptionButtonAction(ActionEvent event) {
@@ -131,6 +159,18 @@
                 Home home = new Home(message ,username);
                 Stage stage = new Stage();
                 home.start(stage);
+
+        }
+
+        private void ouvrirUserHomeStage(String message , String username) {
+
+            // Charger le fichier FXML Home.fxml
+
+
+
+            HomeUser home = new HomeUser(message ,username);
+            Stage stage = new Stage();
+            home.start(stage);
 
         }
 
