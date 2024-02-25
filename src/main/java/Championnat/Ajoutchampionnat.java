@@ -18,7 +18,6 @@ import javafx.scene.layout.BackgroundSize;
 import java.io.File;
 import java.sql.*;
 import java.time.LocalDate;
-
 public class Ajoutchampionnat extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -34,20 +33,78 @@ public class Ajoutchampionnat extends Application {
         Label emptyLabel4 = new Label();
         Label emptyLabel5 = new Label();
         Label emptyLabel6 = new Label();
+        Label emptyLabel7= new Label();
         Label emptyLabel8 = new Label();
         Label emptyLabel9 = new Label();
-        Label emptyLabel7 = new Label();
+        Label emptyLabel10 = new Label();
+        Label emptyLabel11 = new Label();
+        Label emptyLabel12 = new Label();
+
+
         Label labelNomChampionnat = new Label("Nom du championnat :");
         Label labelDate = new Label("Date du championnat :");
         Label labelType = new Label("Type du championnat :");
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         labelDate.setStyle("-fx-font-weight: bold;");
         TextField nom = new TextField();
-       // TextField type = new TextField();
         ComboBox<String> typeComboBox = new ComboBox<>();
-        typeComboBox.getItems().addAll("Type 1", "Type 2", "Type 3");
-        typeComboBox.setValue("Type 1");
-
+        typeComboBox.getItems().addAll(
+                "Handball",
+                "Hockey sur gazon",
+                "Hockey sur glace",
+                "Rugby à VII",
+                "Volley-ball",
+                "Water-polo",
+                "Baseball",
+                "Softball ",
+                "Football",
+                "Natation synchronisée",
+                "Basketball",
+                "Natation",
+                "Sports non olympiques",
+                "Balle à la main",
+                "Balle aux prisonniers",
+                "Balle au tamis",
+                "Balle pelote",
+                "Ballon au poing",
+                "Bandy",
+                "Baseball",
+                "Beach handball",
+                "Beach soccer",
+                "Cricket",
+                "Fistball",
+                "Floorball",
+                "Football américain",
+                "Football australien",
+                "Football en salle",
+                "Football gaélique",
+                "Hockey cosom",
+                "Hockey subaquatique",
+                "Horse-ball",
+                "Kayak-polo",
+                "Kin-ball",
+                "Korfball",
+                "Netball",
+                "Polo",
+                "Poull-Ball",
+                "Rafroball",
+                "Ringuette",
+                "Rink hockey",
+                "Roller in line hockey (RILH)",
+                "Roller Derby",
+                "Patinage synchronisé (Roller artistique en groupe)",
+                "Rugby à XIII",
+                "Rugby à XV",
+                "Sepak takraw",
+                "Smolball",
+                "Snow Volleyball",
+                "Speed Corner",
+                "Softball",
+                "Tchoukball",
+                "Ultimate Frisbee",
+                "Water Volleyball"
+        );
+        typeComboBox.setValue("Sélectionnez un type de sport :");
         DatePicker datePicker = new DatePicker();
         labelType.setStyle("-fx-font-weight: bold;");
         Button boutonConfirmer = new Button("Confirmer");
@@ -71,9 +128,10 @@ public class Ajoutchampionnat extends Application {
                     e.printStackTrace();
                 }
             }});
-
         Button retour = new Button("Retour");
-        retour.setStyle("-fx-background-color: #4c29ee; -fx-text-fill: white; -fx-font-weight: bold;");
+        retour.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
+        retour.setOnMouseEntered(e -> retour.setStyle("-fx-background-color: #020938; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+        retour.setOnMouseExited(e -> retour.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         retour.setOnAction(event -> {
             Championnat retourpage = new Championnat();
             primaryStage.close();
@@ -83,8 +141,9 @@ public class Ajoutchampionnat extends Application {
                 throw new RuntimeException(e);
             }
         });
-
-        boutonConfirmer.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
+        boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
+        boutonConfirmer.setOnMouseEntered(e -> boutonConfirmer.setStyle("-fx-background-color: #144401; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+        boutonConfirmer.setOnMouseExited(e -> boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
@@ -95,8 +154,8 @@ public class Ajoutchampionnat extends Application {
         HBox buttonsBox = new HBox(boutonConfirmer,retour);
         VBox.setMargin(buttonsBox, new Insets(0, 0, 10, 30));
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
-        buttonsBox.setSpacing(400); // Espacement entre les boutons
-        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel4, nom , emptyLabel5, labelType , typeComboBox ,emptyLabel6,  emptyLabel7 , buttonsBox);
+        buttonsBox.setSpacing(350);
+        root.getChildren().addAll(titleBox, emptyLabel1, emptyLabel2, emptyLabel3, labelNomChampionnat, emptyLabel4, nom , emptyLabel5, labelType ,  emptyLabel12,typeComboBox ,emptyLabel6,  emptyLabel7,emptyLabel8 , emptyLabel9 , emptyLabel10, emptyLabel11 , buttonsBox);
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Ajouter un championnat");
@@ -109,7 +168,7 @@ public class Ajoutchampionnat extends Application {
             // Obtenir la date système
             Date dateSysteme = Date.valueOf(LocalDate.now());
 
-            String sql = "INSERT INTO championship (championship_name, date_attribut, type_attribut) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO championship (championship_name, date, type) VALUES (?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nomChampionnat);
             statement.setDate(2, dateSysteme); // Insérer la date système

@@ -72,7 +72,7 @@ public class Afficherequipes extends Application {
             e.printStackTrace();
         }
         Button closeButton = new Button("Fermer");
-        Button retour = new Button("Championnat List");
+        Button retour = new Button("Retour");
         retour.setOnAction(event -> {
             primaryStage.close();
             Championnat retourpage = new Championnat();
@@ -82,12 +82,20 @@ public class Afficherequipes extends Application {
                 e.printStackTrace();
             }
         });
-        closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold;");
-        retour.setStyle("-fx-background-color: #7DBC22; -fx-text-fill: white; -fx-font-weight: bold;");
+
+        closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
+        closeButton.setOnMouseEntered(e -> closeButton.setStyle("-fx-background-color: #4d0404; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+        closeButton.setOnMouseExited(e -> closeButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+
+
+        retour.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
+        retour.setOnMouseEntered(e -> retour.setStyle("-fx-background-color: #020938; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+        retour.setOnMouseExited(e -> retour.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+
         closeButton.setOnAction(event -> primaryStage.close());
         HBox buttonBox = new HBox(closeButton, retour);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
-        buttonBox.setSpacing(320);
+        buttonBox.setSpacing(450);
         VBox.setMargin(buttonBox, new Insets(0, 0, 10, 50));
         VBox root = new VBox(titleLabel,tableView,buttonBox);
         root.setSpacing(30);
