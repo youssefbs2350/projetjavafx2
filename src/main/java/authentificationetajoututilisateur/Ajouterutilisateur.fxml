@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="1249.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentificationetajoututilisateur.AjouterutilisateurController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="1265.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentificationetajoututilisateur.AjouterutilisateurController">
     <children>
-        <ImageView fitHeight="626.0" fitWidth="1272.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="658.0" fitWidth="1279.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@lingrad22.png" />
             </image>

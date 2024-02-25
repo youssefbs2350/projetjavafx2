@@ -79,7 +79,7 @@ public class MainApp extends Application {
                     String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
                     FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
                     AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-                    Scene scene = new Scene(root, 1280, 620);
+                    Scene scene = new Scene(root, 1280, 622);
 
                     stage.setScene(scene);
                     stage.setResizable(false);
