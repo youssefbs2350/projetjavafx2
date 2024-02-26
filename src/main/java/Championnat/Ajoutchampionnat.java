@@ -22,7 +22,7 @@ public class Ajoutchampionnat extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
+     //   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label();
@@ -155,6 +155,7 @@ public class Ajoutchampionnat extends Application {
         primaryStage.setTitle("Ajouter un championnat");
         primaryStage.show();
     }
+    /*
     private void insert(String nomChampionnat, String textFieldType) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
@@ -171,4 +172,6 @@ public class Ajoutchampionnat extends Application {
             e.printStackTrace();
         }
     }
+
+     */
 }
