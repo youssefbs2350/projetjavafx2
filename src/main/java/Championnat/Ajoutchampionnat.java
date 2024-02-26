@@ -1,12 +1,10 @@
 package Championnat;
-import authentificationetajoututilisateur.Home;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -39,13 +37,9 @@ public class Ajoutchampionnat extends Application {
         Label emptyLabel10 = new Label();
         Label emptyLabel11 = new Label();
         Label emptyLabel12 = new Label();
-
-
-        Label labelNomChampionnat = new Label("Nom du championnat :");
-        Label labelDate = new Label("Date du championnat :");
-        Label labelType = new Label("Type du championnat :");
+        Label labelNomChampionnat = new Label("  Nom du championnat :");
+        Label labelType = new Label("  Type du championnat :");
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
-        labelDate.setStyle("-fx-font-weight: bold;");
         TextField nom = new TextField();
         ComboBox<String> typeComboBox = new ComboBox<>();
         typeComboBox.getItems().addAll(
@@ -119,7 +113,7 @@ public class Ajoutchampionnat extends Application {
                 alert.setContentText("Veuillez remplir tous les champs obligatoires.");
                 alert.showAndWait();
             } else {
-                insert(nomChampionnat,typeChampionnat);
+              //  insert(nomChampionnat,typeChampionnat);
                 primaryStage.close();
                 Championnat retourpage = new Championnat();
                 try {
@@ -164,10 +158,8 @@ public class Ajoutchampionnat extends Application {
     private void insert(String nomChampionnat, String textFieldType) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
-
             // Obtenir la date système
             Date dateSysteme = Date.valueOf(LocalDate.now());
-
             String sql = "INSERT INTO championship (championship_name, date, type) VALUES (?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nomChampionnat);
