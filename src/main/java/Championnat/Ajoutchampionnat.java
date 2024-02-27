@@ -42,6 +42,7 @@ public class Ajoutchampionnat extends Application {
         labelNomChampionnat.setStyle("-fx-font-weight: bold;"); // Mise en gras du texte
         TextField nom = new TextField();
         ComboBox<String> typeComboBox = new ComboBox<>();
+        typeComboBox.setValue("Sélectionnez un type de sport :");
         typeComboBox.getItems().addAll(
                 "Handball",
                 "Hockey sur gazon",
@@ -98,7 +99,6 @@ public class Ajoutchampionnat extends Application {
                 "Ultimate Frisbee",
                 "Water Volleyball"
         );
-        typeComboBox.setValue("Sélectionnez un type de sport :");
         DatePicker datePicker = new DatePicker();
         labelType.setStyle("-fx-font-weight: bold;");
         Button boutonConfirmer = new Button("Confirmer");
@@ -138,6 +138,20 @@ public class Ajoutchampionnat extends Application {
         boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
         boutonConfirmer.setOnMouseEntered(e -> boutonConfirmer.setStyle("-fx-background-color: #144401; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         boutonConfirmer.setOnMouseExited(e -> boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
+
+        boutonConfirmer.setOnAction(event -> {
+            Championnat retourpage = new Championnat();
+            primaryStage.close();
+            String nomChampionnat = nom.getText();
+            String typeChampionnat = typeComboBox.getValue();
+            insert(nomChampionnat, typeChampionnat);
+            try {
+                retourpage.start(new Stage());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
@@ -155,7 +169,6 @@ public class Ajoutchampionnat extends Application {
         primaryStage.setTitle("Ajouter un championnat");
         primaryStage.show();
     }
-    /*
     private void insert(String nomChampionnat, String textFieldType) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
@@ -172,6 +185,4 @@ public class Ajoutchampionnat extends Application {
             e.printStackTrace();
         }
     }
-
-     */
 }

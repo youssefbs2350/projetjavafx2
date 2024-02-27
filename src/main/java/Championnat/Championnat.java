@@ -148,7 +148,6 @@ public class Championnat extends Application {
             rowData[1] = championnatid.getString("championship_name");
             rowData[2] = championnatid.getString("type");
             rowData[3] = championnatid.getString("date");
-
             tableView.getItems().add(rowData);
         }
         Button closeButton = new Button("Accueille");
