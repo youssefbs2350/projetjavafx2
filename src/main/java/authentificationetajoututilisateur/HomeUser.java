@@ -26,7 +26,7 @@ public class HomeUser extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Page d'accueil");
+        primaryStage.setTitle("Page d'accueil user");
 
         Label messageLabel = new Label(message);
         messageLabel.setTextFill(Color.WHITE);
