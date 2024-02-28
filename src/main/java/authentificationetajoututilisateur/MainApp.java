@@ -68,7 +68,7 @@ public class MainApp extends Application {
             stage = primaryStage;
 
             // Chemin de la vidéo d'introduction
-            String introVideoPath = "C:\\Users\\Administrator\\Desktop\\javafx\\projetjavafx2\\src\\main\\java\\authentificationetajoututilisateur\\intro.mp4";
+            String introVideoPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\intro.mp4";
             Media introMedia = new Media(new File(introVideoPath).toURI().toString());
             MediaPlayer introPlayer = new MediaPlayer(introMedia);
             MediaView introView = new MediaView(introPlayer);
@@ -76,7 +76,7 @@ public class MainApp extends Application {
             // Charger le fichier FXML après la vidéo d'introduction
             introPlayer.setOnEndOfMedia(() -> {
                 try {
-                    String fxmlDocPath = "C:\\Users\\Administrator\\Desktop\\javafx\\projetjavafx2\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
+                    String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\AuthentificationAp.fxml";
                     FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
                     AnchorPane root = (AnchorPane) loader.load(fxmlStream);
                     Scene scene = new Scene(root, 1280, 622);

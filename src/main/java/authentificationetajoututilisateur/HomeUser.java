@@ -35,8 +35,8 @@ public class HomeUser extends Application {
         // Boutons
         Button equipeButton = createButton("Équipe");
         equipeButton.getStyleClass().add("detailsMatchButton");
-        Button championnatButton = createButton("Championnat");
-        championnatButton.getStyleClass().add("detailsMatchButton");
+        //Button championnatButton = createButton("Championnat");
+     //   championnatButton.getStyleClass().add("detailsMatchButton");
         Button matchButton = createButton("Match");
         matchButton.getStyleClass().add("detailsMatchButton");
         Button detailsMatchButton = createButton("Détails Match");
@@ -66,7 +66,7 @@ public class HomeUser extends Application {
 
         // HBox pour les boutons horizontaux (sauf le bouton Fermer)
         HBox buttonsBox = new HBox(75);
-        buttonsBox.getChildren().addAll(equipeButton, championnatButton, matchButton, detailsMatchButton);
+        buttonsBox.getChildren().addAll(equipeButton, /*championnatButton,*/ matchButton, detailsMatchButton);
         buttonsBox.setAlignment(Pos.CENTER);
 
         // HBox pour le nouveau bouton et le bouton Fermer
