@@ -1,5 +1,6 @@
 package authentificationetajoututilisateur;
 
+import Championnat.Championnat;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,9 +25,13 @@ public class Home extends Application {
         this.username = username;
     }
 
+    public Home() {
+
+    }
+
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Page d'accueil");
+        primaryStage.setTitle("Page d'accueil admin");
 
         Label messageLabel = new Label(message);
         messageLabel.setTextFill(Color.WHITE);
@@ -36,6 +41,15 @@ public class Home extends Application {
         Button equipeButton = createButton("Équipe");
         equipeButton.getStyleClass().add("detailsMatchButton");
         Button championnatButton = createButton("Championnat");
+        championnatButton.setOnAction(event -> {
+            Championnat champ = new Championnat();
+       //     primaryStage.close();
+            try {
+                champ.start(new Stage());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
         championnatButton.getStyleClass().add("detailsMatchButton");
         Button matchButton = createButton("Match");
         matchButton.getStyleClass().add("detailsMatchButton");
