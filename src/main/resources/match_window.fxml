@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.MatchWindow">
+    <children>
+        <TabPane VBox.vgrow="ALWAYS" stylesheets="@match_window.css">
+            <tabs>
+                <Tab text="Matchs à venir">
+                    <content>
+                        <TableView fx:id="upcomingMatchesTableView" >
+                            <columns>
+                                <TableColumn text="Équipe A ID" fx:id="upcomingTeamANameColumn" />
+                                <TableColumn text="Équipe B ID" fx:id="upcomingTeamBNameColumn" />
+                                <TableColumn text="Terrain" fx:id="upcomingFieldColumn" />
+                                <TableColumn text="Date Match" fx:id="upcomingDateMatchColumn" />
+                                <TableColumn text="Ville" fx:id="upcomingCityColumn" />
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="Résultats du match">
+                    <content>
+                        <TableView fx:id="matchResultsTableView" >
+                            <columns>
+                                <TableColumn text="Match ID" fx:id="matchIdColumn" />
+                                <TableColumn text="Équipe A" fx:id="teamANameColumn" />
+                                <TableColumn text="Équipe B" fx:id="teamBNameColumn" />
+                                <TableColumn text="Score Équipe A" fx:id="teamAScoreColumn" />
+                                <TableColumn text="Score Équipe B" fx:id="teamBScoreColumn" />
+                                <TableColumn text="Terrain" fx:id="fieldColumn" />
+                                <TableColumn text="Date Match" fx:id="dateMatchColumn" />
+                                <TableColumn text="Ville" fx:id="cityColumn" />
+                                <TableColumn text="Arbitre ID" fx:id="refereeIdColumn" />
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
