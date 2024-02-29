@@ -25,7 +25,7 @@ public class Afficherequipes extends Application {
     }
     @Override
     public void start(Stage primaryStage) {
-        Label titleLabel = new Label("List des Equipes dans la Chammpionnat : "+nomchampionnat);
+        Label titleLabel = new Label(""+nomchampionnat);
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         TableView<String[]> tableView = new TableView<>();
         TableColumn<String[], String> column2 = new TableColumn<>("Nom de l'équipe");
