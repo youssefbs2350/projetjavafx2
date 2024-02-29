@@ -1,5 +1,6 @@
 package authentificationetajoututilisateur;
 
+import Match.MatchWindow;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -63,6 +64,18 @@ public class HomeUser extends Application {
             modifierWindow.start(stage2);
         });
         modifierButton.setPrefSize(120, 60);
+
+        matchButton.setOnAction(e -> {
+            MatchWindow matchWindow = null;
+            try {
+                matchWindow = new MatchWindow();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            Stage stage3 = new Stage();
+            matchWindow.start(stage3);
+        });
+        matchButton.setPrefSize(120, 60);
 
         // HBox pour les boutons horizontaux (sauf le bouton Fermer)
         HBox buttonsBox = new HBox(75);
