@@ -81,10 +81,6 @@ public class AuthentificationApController implements Initializable {
         connection = Authentification.getInstance().getConnection();
     }
 
-    public TextField getUsernameField() {
-        return usernameField;
-    }
-
     @FXML
     private void handleLoginButtonAction(ActionEvent event) throws SQLException {
         String username = usernameField.getText();

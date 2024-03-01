@@ -5,6 +5,8 @@ import java.sql.*;
 public class Authentification {
     private static Authentification instance;
     private Connection connection;
+    private String username;
+    private String password;
 
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/projetjavafx";
     private static final String DB_USER = "root";
@@ -48,6 +50,25 @@ public class Authentification {
         return !username.isEmpty() && !password.isEmpty();
     }
 
+    public String getUsername1() {
+        try {
+            String query = "SELECT username FROM utilisateurs WHERE username = ? AND password = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, this.username); // Utiliser le nom d'utilisateur stocké
+                preparedStatement.setString(2, this.password); // Utiliser le mot de passe stocké
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("username");
+                    } else {
+                        return null; // L'utilisateur n'a pas été trouvé
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public String getUsername(String username, String password) {
         try {

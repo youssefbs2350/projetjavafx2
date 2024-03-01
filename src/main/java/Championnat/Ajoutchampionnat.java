@@ -105,7 +105,8 @@ public class Ajoutchampionnat extends Application {
         boutonConfirmer.setOnAction(event -> {
             String nomChampionnat = nom.getText();
             String typeChampionnat = typeComboBox.getValue();
-            if (nomChampionnat.isEmpty() || typeChampionnat.isEmpty()) {
+            if (nomChampionnat.isEmpty()||(typeChampionnat=="Sélectionnez un type de sport :")) {
+                System.out.println("maher");
                 // Afficher un message d'erreur à l'utilisateur
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur de saisie");
@@ -113,6 +114,7 @@ public class Ajoutchampionnat extends Application {
                 alert.setContentText("Veuillez remplir tous les champs obligatoires.");
                 alert.showAndWait();
             } else {
+                insert(nomChampionnat, typeChampionnat);
                 primaryStage.close();
                 Championnat retourpage = new Championnat();
                 try {
@@ -121,6 +123,7 @@ public class Ajoutchampionnat extends Application {
                     e.printStackTrace();
                 }
             }});
+
         Button retour = new Button("Retour");
         retour.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
         retour.setOnMouseEntered(e -> retour.setStyle("-fx-background-color: #020938; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));

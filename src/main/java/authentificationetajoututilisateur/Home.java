@@ -2,6 +2,7 @@ package authentificationetajoututilisateur;
 
 import Championnat.Championnat;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,6 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -39,6 +43,25 @@ public class Home extends Application {
 
         // Boutons
         Button equipeButton = createButton("Équipe");
+        equipeButton.setOnAction(event -> {
+            try {
+                String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\Teams\\listteam.fxml";
+                FXMLLoader loader = new FXMLLoader();
+                FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+                AnchorPane root = loader.load(fxmlStream);
+
+                Scene scene = new Scene(root, 709, 494);
+                primaryStage.setScene(scene);
+                primaryStage.setResizable(true);
+                primaryStage.setTitle("équipe");
+                primaryStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception, e.g., display an error message to the user
+                // Or log the error for debugging purposes
+            }
+        });
+
         equipeButton.getStyleClass().add("detailsMatchButton");
         Button championnatButton = createButton("Championnat");
         championnatButton.setOnAction(event -> {
@@ -52,18 +75,26 @@ public class Home extends Application {
         });
         championnatButton.getStyleClass().add("detailsMatchButton");
         Button matchButton = createButton("Match");
+        matchButton.setOnAction(e ->{
+            Match match = new Match();
+            Stage stageMatch = new Stage();
+            try {
+                match.start(stageMatch);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         matchButton.getStyleClass().add("detailsMatchButton");
         Button detailsMatchButton = createButton("Détails Match");
         detailsMatchButton.getStyleClass().add("detailsMatchButton");
 
-        // Bouton Fermer
         Button fermerButton = new Button("Fermer");
         fermerButton.getStyleClass().add("fermerButton");
         fermerButton.setOnAction(e -> primaryStage.close());
         fermerButton.setPrefSize(120, 60);
 
-        // Nouveau bouton pour modifier les données de l'utilisateur
         Button modifierButton = new Button("Modifier");
+        //arbitre
         modifierButton.getStyleClass().add("matchButton");
         modifierButton.setOnAction(e -> {
             ModifierUtilisateur modifierWindow = null;

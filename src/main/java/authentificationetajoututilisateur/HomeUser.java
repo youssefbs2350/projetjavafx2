@@ -1,6 +1,7 @@
 package authentificationetajoututilisateur;
 
 import Match.MatchWindow;
+import Teams.Listteamuser;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -35,6 +39,32 @@ public class HomeUser extends Application {
 
         // Boutons
         Button equipeButton = createButton("Équipe");
+        equipeButton.setOnAction(event -> {
+            try {
+                String fxmlDocPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\Teams\\listteamuser.fxml";
+                javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
+                FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
+                AnchorPane root = loader.load(fxmlStream);
+
+                Scene scene = new Scene(root, 709, 494);
+                primaryStage.setScene(scene);
+                primaryStage.setResizable(true);
+                primaryStage.setTitle("équipe");
+                primaryStage.show();
+
+
+                // Obtenez une référence à la classe Listteam depuis le chargeur FXML
+                Listteamuser listTeamController = loader.getController();
+
+                // Passez le nom d'utilisateur à la classe Listteam
+                listTeamController.getUsername();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérer l'exception, par exemple afficher un message d'erreur à l'utilisateur
+            }
+        });
         equipeButton.getStyleClass().add("detailsMatchButton");
         //Button championnatButton = createButton("Championnat");
      //   championnatButton.getStyleClass().add("detailsMatchButton");

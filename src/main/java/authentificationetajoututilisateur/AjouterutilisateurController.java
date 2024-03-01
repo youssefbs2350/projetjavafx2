@@ -98,6 +98,12 @@ public class AjouterutilisateurController implements Initializable {
             preparedStatement.setString(4, password);
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0; // Si au moins une ligne est affectée, l'ajout a réussi
+          //  try {
+            //    Email.envoyerMailNouvelUtilisateur(username);
+          //  } catch (Exception e) {
+            //    e.printStackTrace();
+          //  }
+
         }
     }
 
