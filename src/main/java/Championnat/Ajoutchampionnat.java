@@ -22,7 +22,6 @@ public class Ajoutchampionnat extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws SQLException {
-     //   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label();
@@ -45,8 +44,8 @@ public class Ajoutchampionnat extends Application {
         typeComboBox.setValue("Sélectionnez un type de sport :");
         typeComboBox.getItems().addAll(
                 "Handball",
-                "Hockey sur gazon",
-                "Hockey sur glace",
+                "Football",
+                "Basket Ball",
                 "Rugby à VII",
                 "Volley-ball",
                 "Water-polo",
@@ -140,20 +139,6 @@ public class Ajoutchampionnat extends Application {
         boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
         boutonConfirmer.setOnMouseEntered(e -> boutonConfirmer.setStyle("-fx-background-color: #144401; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         boutonConfirmer.setOnMouseExited(e -> boutonConfirmer.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
-
-        boutonConfirmer.setOnAction(event -> {
-            Championnat retourpage = new Championnat();
-            primaryStage.close();
-            String nomChampionnat = nom.getText();
-            String typeChampionnat = typeComboBox.getValue();
-            insert(nomChampionnat, typeChampionnat);
-            try {
-                retourpage.start(new Stage());
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
         VBox root = new VBox();
         HBox titleBox = new HBox(titleLabel); // Créer une HBox pour le titre
         root.setBackground(new Background(new BackgroundImage(
