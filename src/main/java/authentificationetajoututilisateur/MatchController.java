@@ -135,11 +135,11 @@ private void initialize() {
     TableColumn<Match, Integer> matchIdColumn = new TableColumn<>("Match ID");
     matchIdColumn.setCellValueFactory(new PropertyValueFactory<>("match_id"));
 
-    TableColumn<Match, String> teamAColumn = new TableColumn<>("Team A");
-    teamAColumn.setCellValueFactory(new PropertyValueFactory<>("teamAName"));
+    TableColumn<Match, Integer> teamAColumn = new TableColumn<>("Team A");
+    teamAColumn.setCellValueFactory(new PropertyValueFactory<>("team_A_id"));
 
-    TableColumn<Match, String> teamBColumn = new TableColumn<>("Team B");
-    teamBColumn.setCellValueFactory(new PropertyValueFactory<>("teamBName"));
+    TableColumn<Match, Integer> teamBColumn = new TableColumn<>("Team B");
+    teamBColumn.setCellValueFactory(new PropertyValueFactory<>("team_B_id"));
 
     TableColumn<Match, Integer> teamAScoreColumn = new TableColumn<>("Team A Score");
     teamAScoreColumn.setCellValueFactory(new PropertyValueFactory<>("team_A_score"));

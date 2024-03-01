@@ -85,8 +85,15 @@ public class Home extends Application {
             }
         });
         matchButton.getStyleClass().add("detailsMatchButton");
-        Button detailsMatchButton = createButton("Détails Match");
-        detailsMatchButton.getStyleClass().add("detailsMatchButton");
+        Button arbitreButton = createButton("Arbitre");
+        arbitreButton.setOnAction(e -> {
+            ajout_arbitre ajout_arbitre = null;
+            ajout_arbitre = new ajout_arbitre();
+
+            Stage stage2 = new Stage();
+            ajout_arbitre.start(stage2);
+        });
+        arbitreButton.getStyleClass().add("detailsMatchButton");
 
         Button fermerButton = new Button("Fermer");
         fermerButton.getStyleClass().add("fermerButton");
@@ -111,7 +118,7 @@ public class Home extends Application {
 
         // HBox pour les boutons horizontaux (sauf le bouton Fermer)
         HBox buttonsBox = new HBox(75);
-        buttonsBox.getChildren().addAll(equipeButton, championnatButton, matchButton, detailsMatchButton);
+        buttonsBox.getChildren().addAll(equipeButton, championnatButton, matchButton, arbitreButton);
         buttonsBox.setAlignment(Pos.CENTER);
 
         // HBox pour le nouveau bouton et le bouton Fermer

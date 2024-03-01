@@ -66,13 +66,12 @@ public class HomeUser extends Application {
             }
         });
         equipeButton.getStyleClass().add("detailsMatchButton");
-<<<<<<< HEAD
+
       //  Button championnatButton = createButton("Championnat");
       //  championnatButton.getStyleClass().add("detailsMatchButton");
-=======
+
         //Button championnatButton = createButton("Championnat");
      //   championnatButton.getStyleClass().add("detailsMatchButton");
->>>>>>> bd3c5ecc1f7a58862208318e144ae2331d45bbb1
         Button matchButton = createButton("Match");
         matchButton.getStyleClass().add("detailsMatchButton");
         Button detailsMatchButton = createButton("Détails Match");
@@ -114,11 +113,11 @@ public class HomeUser extends Application {
 
         // HBox pour les boutons horizontaux (sauf le bouton Fermer)
         HBox buttonsBox = new HBox(75);
-<<<<<<< HEAD
-        buttonsBox.getChildren().addAll(equipeButton,matchButton, detailsMatchButton);
-=======
-        buttonsBox.getChildren().addAll(equipeButton, /*championnatButton,*/ matchButton, detailsMatchButton);
->>>>>>> bd3c5ecc1f7a58862208318e144ae2331d45bbb1
+
+        buttonsBox.getChildren().addAll(equipeButton,matchButton);
+
+        //buttonsBox.getChildren().addAll(equipeButton, /*championnatButton,*/ matchButton);
+
         buttonsBox.setAlignment(Pos.CENTER);
 
         // HBox pour le nouveau bouton et le bouton Fermer

@@ -2,6 +2,7 @@ package Teams;
 
 import authentificationetajoututilisateur.Authentification;
 import authentificationetajoututilisateur.Home;
+import authentificationetajoututilisateur.HomeUser;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -336,7 +337,7 @@ public class Listteamuser implements Initializable {
         Stage currentStage = (Stage) teamlist1.getScene().getWindow();
         currentStage.close();
         // Code pour charger la page d'accueil, par exemple :
-        Home home = new Home("Bonjour", "Nom d'utilisateur"); // Remplacez "Message d'accueil" et "Nom d'utilisateur" par les valeurs appropriées
+        HomeUser home = new HomeUser("Bonjour", "Nom d'utilisateur"); // Remplacez "Message d'accueil" et "Nom d'utilisateur" par les valeurs appropriées
         Stage newStage = new Stage();
         home.start(newStage);
     }
