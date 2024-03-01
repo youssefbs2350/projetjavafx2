@@ -67,7 +67,7 @@ public class MainApp extends Application {
         try {
             stage = primaryStage;
 
-            // Chemin de la vidéo d'introduction
+            // Chemin de l'intro'
             String introVideoPath = "D:\\Users\\youss\\.jdks\\jbr-17.0.8\\bin\\gitfx\\projetjavafx3\\src\\main\\java\\authentificationetajoututilisateur\\intro.mp4";
             Media introMedia = new Media(new File(introVideoPath).toURI().toString());
             MediaPlayer introPlayer = new MediaPlayer(introMedia);

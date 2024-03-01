@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane1" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('football.png'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Teams.Listteam">
+   <children>
+      <Text fx:id="teamlist" layoutX="287.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teams List" textAlignment="CENTER" wrappingWidth="211.25698852539062">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="pane2" prefHeight="600.0" prefWidth="136.0" style="-fx-background-color: #5ECA62;">
+         <children>
+            <Text fx:id="textmenu" fill="#f7f2f2" layoutX="27.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+            <Button fx:id="addteam" layoutX="9.0" layoutY="199.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #2254F5;" text="Add Team" />
+            <Button fx:id="viewPlayersButton" layoutX="9.0" layoutY="261.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #FFA500;" text="View Players" />
+            <Button fx:id="delete" layoutX="11.0" layoutY="322.0" mnemonicParsing="false" onAction="#deleteRowFromTable" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #D22310;" text="Delete Team" textFill="#2b2929" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="table1" layoutX="161.0" layoutY="209.0" prefHeight="368.0" prefWidth="436.0" styleClass="table-view" />
+      <Button fx:id="refreshButton" layoutX="718.0" layoutY="14.0" onAction="#refreshTable" style="-fx-background-color: #A49B6B;" text="Refresh" />
+   </children>
+</AnchorPane>

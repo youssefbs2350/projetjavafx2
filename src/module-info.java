@@ -15,4 +15,6 @@ requires  java.sql;
     requires javafx.media;
     exports authentificationetajoututilisateur to javafx.graphics , javafx.fxml , javafx.controls , javafx.base , javafx.media;
     opens authentificationetajoututilisateur to javafx.fxml , javafx.graphics, javafx.controls , javafx.base, javafx.media;
+    exports Teams;
+    opens Teams to javafx.fxml;
 }
