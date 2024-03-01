@@ -22,7 +22,6 @@ public class Ajoutchampionnat extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws SQLException {
-     //   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetjavafx", "root", "");
         Label titleLabel = new Label("Ajout d'un Championnat");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         Label emptyLabel1 = new Label();
@@ -45,8 +44,8 @@ public class Ajoutchampionnat extends Application {
         typeComboBox.setValue("Sélectionnez un type de sport :");
         typeComboBox.getItems().addAll(
                 "Handball",
-                "Hockey sur gazon",
-                "Hockey sur glace",
+                "Football",
+                "Basket Ball",
                 "Rugby à VII",
                 "Volley-ball",
                 "Water-polo",

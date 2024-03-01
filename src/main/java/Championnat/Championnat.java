@@ -32,7 +32,7 @@ public class Championnat extends Application {
         ajouterChampionnat.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
         ajouterChampionnat.setOnMouseEntered(e -> ajouterChampionnat.setStyle("-fx-background-color: #144401; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         ajouterChampionnat.setOnMouseExited(e -> ajouterChampionnat.setStyle("-fx-background-color: #2c8c07; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
-        Label titleLabel = new Label("Les Championnats");
+        Label titleLabel = new Label("                                     Les Championnats");
         titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
         TableView<String[]> tableView = new TableView<>();
         TableColumn<String[], String> column1 = new TableColumn<>("N°");
@@ -97,7 +97,7 @@ public class Championnat extends Application {
         });
         column4.setCellFactory(column -> {
             return new TableCell<>() {
-                final Button button = new Button("Equipes");
+                final Button button = new Button("equipes");
                 @Override
                 protected void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
@@ -141,7 +141,36 @@ public class Championnat extends Application {
                 e.printStackTrace();
             }
         });
-        tableView.getColumns().addAll(column1, column2, column5, column6,column3 ,column4);
+        TableColumn<String[], String> column7 = new TableColumn<>("Modifier");
+        column7.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 0 ? new javafx.beans.property.SimpleStringProperty(rowData[0]) : null;
+        });
+        column7.setCellFactory(column -> {
+            return new TableCell<>() {
+                final Button button = new Button("modifier");
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(button);
+                        button.setOnAction(event -> {
+                            String idChampionnat = getTableView().getItems().get(getIndex())[0];
+                          //  ModifierChampionnat modifer = new ModifierChampionnat(idChampionnat);
+                         //  modifer.start(new Stage());
+                            primaryStage.close();
+                            try {
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }
+                }
+            };
+        });
+        tableView.getColumns().addAll(column1, column2, column5, column6,column3 ,column4 , column7);
         while (championnatid.next()) {
             String[] rowData = new String[4];
             rowData[0] = championnatid.getString("championship_id");
@@ -150,7 +179,7 @@ public class Championnat extends Application {
             rowData[3] = championnatid.getString("date");
             tableView.getItems().add(rowData);
         }
-        Button closeButton = new Button("Accueille");
+        Button closeButton = new Button("Acceuil");
         closeButton.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";");
         closeButton.setOnMouseEntered(e -> closeButton.setStyle("-fx-background-color: #020938; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
         closeButton.setOnMouseExited(e -> closeButton.setStyle("-fx-background-color: #0903da; -fx-text-fill: white; -fx-font-weight: bold; -fx-min-width: 100px; -fx-min-height: 40px; -fx-shape: \"M 15 0 L 85 0 Q 100 0, 100 15 L 100 85 Q 100 100, 85 100 L 15 100 Q 0 100, 0 85 L 0 15 Q 0 0, 15 0 Z\";"));
@@ -159,6 +188,10 @@ public class Championnat extends Application {
             primaryStage.close();
             home.start(new Stage());
         });
+
+
+
+
         HBox buttonBox = new HBox(ajouterChampionnat, closeButton);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
         buttonBox.setSpacing(400); // Espacement entre les boutons
