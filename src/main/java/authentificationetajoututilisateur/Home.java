@@ -31,7 +31,7 @@ public class Home extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Page d'accueil");
+        primaryStage.setTitle("Page d'accueil admin");
 
         Label messageLabel = new Label(message);
         messageLabel.setTextFill(Color.WHITE);
