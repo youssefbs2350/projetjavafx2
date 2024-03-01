@@ -25,6 +25,7 @@ public class MatchDAO implements Initializable {
         }
     }
 
+
     public List<Match> getAllMatches() throws SQLException {
         List<Match> matches = new ArrayList<>();
         String query = "SELECT * FROM `match`";

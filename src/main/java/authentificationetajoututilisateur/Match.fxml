@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentificationetajoututilisateur.MatchController">
     <children>
-        <TableView fx:id="matchTableView" layoutX="42.0" layoutY="137.0" prefHeight="239.0" prefWidth="537.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="137.0">
-            <columns>
-                <TableColumn fx:id="matchIdColumn" prefWidth="80.0" text="Match ID" />
-                <TableColumn fx:id="teamAIdColumn" prefWidth="100.0" text="Team A ID" />
-                <TableColumn fx:id="teamBIdColumn" prefWidth="100.0" text="Team B ID" />
-                <TableColumn fx:id="teamAScoreColumn" prefWidth="100.0" text="Team A Score" />
-                <TableColumn fx:id="teamBScoreColumn" prefWidth="100.0" text="Team B Score" />
-                <TableColumn fx:id="fieldColumn" prefWidth="100.0" text="Field" />
-                <TableColumn fx:id="dateMatchColumn" prefWidth="100.0" text="Date Match" />
-                <TableColumn fx:id="cityColumn" prefWidth="100.0" text="City" />
-                <TableColumn fx:id="refereeIdColumn" prefWidth="100.0" text="Referee ID" />
-            </columns>
+        <TableView fx:id="matchTableView" layoutX="165.0" layoutY="57.0" prefHeight="295.0" prefWidth="431.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="57.0">
+
         </TableView>
-        <TextField fx:id="searchField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="497.0" promptText="Search Matches" style="-fx-background-radius: 20;" />
+        <TextField fx:id="searchField" layoutX="179.0" layoutY="14.0" prefHeight="25.0" prefWidth="332.0" promptText="Search Matches" style="-fx-background-radius: 20;" />
         <Button layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-background-radius: 20;" text="Search" />
-        <Button layoutX="157.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleAddMatch" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-background-radius: 20;" text="Add Match" />
-        <Button layoutX="518.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleDeleteMatch" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-background-radius: 20;" text="Delete Match" />
-        <Button layoutX="250.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleUpdateMatch" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #ffc107; -fx-text-fill: white; -fx-background-radius: 20;" text="Update Match" />
-        <Button layoutX="295.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleGetMatchesForTeam" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #795548; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches for Team" />
-        <Button layoutX="486.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleGetMatchesInCity" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #607d8b; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches in City" />
-        <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleGetMatchesAfterDate" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #9c27b0; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches After Date" />
-        <Button layoutX="150.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleGetMatchesByReferee" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #e91e63; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches By Referee" />
-        <Button layoutX="20.0" layoutY="58.0" mnemonicParsing="false" onAction="#loadMatchData" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #23c610; -fx-text-fill: white; -fx-background-radius: 20;" text="Get All Matches" />
-        <Button layoutX="371.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleGetMatchesByScore" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #009688; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches By Score" />
+      <AnchorPane layoutX="-6.0" prefHeight="403.0" prefWidth="120.0">
+         <children>
+              <Button layoutX="26.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleAddMatch" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-background-radius: 20;" text="Add Match" />
+              <Button layoutX="16.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleGetMatchesByScore" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #009688; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches By Score" />
+              <Button layoutX="1.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleGetMatchesForTeam" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #795548; -fx-text-fill: white; -fx-background-radius: 20;" text="Get Matches for Team" />
+              <Button layoutX="11.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleUpdateMatch" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #ffc107; -fx-text-fill: white; -fx-background-radius: 20;" text="Update Match" />
+              <Button layoutX="5.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadMatchData" prefHeight="18.0" prefWidth="122.0" style="-fx-background-color: #23c610; -fx-text-fill: white; -fx-background-radius: 20;" text="Get All Matches" />
+              <Button layoutX="16.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleDeleteMatch" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-background-radius: 20;" text="Delete Match" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

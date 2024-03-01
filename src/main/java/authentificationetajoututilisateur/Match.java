@@ -7,8 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
-import java.util.Date;
-//import java.sql.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 public class Match extends Application {
     private int match_id;

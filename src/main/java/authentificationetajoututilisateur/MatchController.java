@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -32,14 +32,144 @@ public class MatchController {
 
     private MatchDAO matchDAO;
 
+    private Authentification authentification;
+
     public MatchController() throws SQLException {
         this.matchDAO = new MatchDAO(Authentification.getInstance());
     }
-
+/*
     @FXML
     private void initialize() {
-        loadMatchData();
+      //  loadMatchData();
+        try {
+            authentification = Authentification.getInstance();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        TableColumn<String[], String> column2 = new TableColumn<>("Match ID");
+        column2.setPrefWidth(180);
+        column2.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 1 ? new javafx.beans.property.SimpleStringProperty(rowData[1]) : null;
+        });
+        TableColumn<String[], String> column3 = new TableColumn<>("Team A");
+        column3.setPrefWidth(180);
+        column3.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 2 ? new javafx.beans.property.SimpleStringProperty(rowData[2]) : null;
+        });
+        TableColumn<String[], String> column4 = new TableColumn<>("Team B");
+        column4.setPrefWidth(180);
+        column4.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 3 ? new javafx.beans.property.SimpleStringProperty(rowData[3]) : null;
+        });
+        TableColumn<String[], String> column5 = new TableColumn<>("Team A score");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 4 ? new javafx.beans.property.SimpleStringProperty(rowData[4]) : null;
+        });
+        TableColumn<String[], String> column6 = new TableColumn<>("Team B score");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 5 ? new javafx.beans.property.SimpleStringProperty(rowData[5]) : null;
+        });
+        TableColumn<String[], String> column7 = new TableColumn<>("stade");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 6 ? new javafx.beans.property.SimpleStringProperty(rowData[6]) : null;
+        });
+        TableColumn<String[], String> column10 = new TableColumn<>("date");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 7 ? new javafx.beans.property.SimpleStringProperty(rowData[7]) : null;
+        });
+        TableColumn<String[], String> column8 = new TableColumn<>("city");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 8 ? new javafx.beans.property.SimpleStringProperty(rowData[8]) : null;
+        });
+        TableColumn<String[], String> column9 = new TableColumn<>("refree");
+        column5.setPrefWidth(180);
+        column5.setCellValueFactory(param -> {
+            String[] rowData = param.getValue();
+            return rowData != null && rowData.length > 9 ? new javafx.beans.property.SimpleStringProperty(rowData[9]) : null;
+        });
+
+        matchTableView.getColumns().addAll(column2, column3, column4, column5, column6, column7, column8, column9);
+        String query = "SELECT * FROM team WHERE championship_id = ?";
+        try (PreparedStatement statement = authentification.getConnection().prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+            // Remplacer le paramètre dans la requête SQL avec idChampionnat
+            statement.setString(1, idChampionnat);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                tableView.getItems().add(new String[]{
+                        resultSet.getString("team_id"),
+                        resultSet.getString("team_name"),
+                        resultSet.getString("number_of_players"),
+                        resultSet.getString("team_score"),
+                        resultSet.getString("championship_id")
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
+    */
+@FXML
+private void initialize() {
+    try {
+        authentification = Authentification.getInstance();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+    TableColumn<Match, Integer> matchIdColumn = new TableColumn<>("Match ID");
+    matchIdColumn.setCellValueFactory(new PropertyValueFactory<>("match_id"));
+
+    TableColumn<Match, String> teamAColumn = new TableColumn<>("Team A");
+    teamAColumn.setCellValueFactory(new PropertyValueFactory<>("teamAName"));
+
+    TableColumn<Match, String> teamBColumn = new TableColumn<>("Team B");
+    teamBColumn.setCellValueFactory(new PropertyValueFactory<>("teamBName"));
+
+    TableColumn<Match, Integer> teamAScoreColumn = new TableColumn<>("Team A Score");
+    teamAScoreColumn.setCellValueFactory(new PropertyValueFactory<>("team_A_score"));
+
+    TableColumn<Match, Integer> teamBScoreColumn = new TableColumn<>("Team B Score");
+    teamBScoreColumn.setCellValueFactory(new PropertyValueFactory<>("team_B_score"));
+
+    TableColumn<Match, String> fieldColumn = new TableColumn<>("Field");
+    fieldColumn.setCellValueFactory(new PropertyValueFactory<>("field"));
+
+    TableColumn<Match, Date> dateMatchColumn = new TableColumn<>("Date");
+    dateMatchColumn.setCellValueFactory(new PropertyValueFactory<>("date_match"));
+
+    TableColumn<Match, String> cityColumn = new TableColumn<>("City");
+    cityColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
+
+    TableColumn<Match, Integer> refereeIdColumn = new TableColumn<>("Referee ID");
+    refereeIdColumn.setCellValueFactory(new PropertyValueFactory<>("referee_id"));
+
+    matchTableView.getColumns().addAll(matchIdColumn, teamAColumn, teamBColumn, teamAScoreColumn, teamBScoreColumn, fieldColumn, dateMatchColumn, cityColumn, refereeIdColumn);
+
+    // Load data into the table view
+    try {
+        List<Match> matches = matchDAO.getAllMatches();
+        ObservableList<Match> matchObservableList = FXCollections.observableArrayList(matches);
+        matchTableView.setItems(matchObservableList);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
     @FXML
     private void loadMatchData() {
